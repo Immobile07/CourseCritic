@@ -1,0 +1,1848 @@
+{
+  "professors": [
+    {
+      "initial": "NZRF",
+      "name": "NZRF",
+      "department": "CSE"
+    },
+    {
+      "initial": "RBR",
+      "name": "RBR",
+      "department": "CSE"
+    },
+    {
+      "initial": "SBHN",
+      "name": "SBHN",
+      "department": "CSE"
+    },
+    {
+      "initial": "XXX",
+      "name": "XXX",
+      "department": "CSE"
+    },
+    {
+      "initial": "MSI",
+      "name": "MSI",
+      "department": "CSE"
+    },
+    {
+      "initial": "TAW",
+      "name": "TAW",
+      "department": "CSE"
+    },
+    {
+      "initial": "ADU",
+      "name": "ADU",
+      "department": "CSE"
+    },
+    {
+      "initial": "RAK",
+      "name": "RAK",
+      "department": "CSE"
+    },
+    {
+      "initial": "AOH",
+      "name": "AOH",
+      "department": "CSE"
+    },
+    {
+      "initial": "KNI",
+      "name": "KNI",
+      "department": "CSE"
+    },
+    {
+      "initial": "MAU",
+      "name": "MAU",
+      "department": "CSE"
+    },
+    {
+      "initial": "RSYR",
+      "name": "RSYR",
+      "department": "CSE"
+    },
+    {
+      "initial": "ATY",
+      "name": "ATY",
+      "department": "CSE"
+    },
+    {
+      "initial": "SSMT",
+      "name": "SSMT",
+      "department": "CSE"
+    },
+    {
+      "initial": "ANK",
+      "name": "ANK",
+      "department": "CSE"
+    },
+    {
+      "initial": "RKBM",
+      "name": "RKBM",
+      "department": "CSE"
+    },
+    {
+      "initial": "AIB",
+      "name": "AIB",
+      "department": "CSE"
+    },
+    {
+      "initial": "AFA",
+      "name": "AFA",
+      "department": "CSE"
+    },
+    {
+      "initial": "QUZA",
+      "name": "QUZA",
+      "department": "CSE"
+    },
+    {
+      "initial": "TBC",
+      "name": "TBC",
+      "department": "CSE"
+    },
+    {
+      "initial": "SHBZ",
+      "name": "SHBZ",
+      "department": "CSE"
+    },
+    {
+      "initial": "MAHR",
+      "name": "MAHR",
+      "department": "CSE"
+    },
+    {
+      "initial": "KKS",
+      "name": "KKS",
+      "department": "CSE"
+    },
+    {
+      "initial": "MUNR",
+      "name": "MUNR",
+      "department": "CSE"
+    },
+    {
+      "initial": "SWG",
+      "name": "SWG",
+      "department": "CSE"
+    },
+    {
+      "initial": "MNP",
+      "name": "MNP",
+      "department": "CSE"
+    },
+    {
+      "initial": "ITTSC",
+      "name": "ITTSC",
+      "department": "CSE"
+    },
+    {
+      "initial": "HFN",
+      "name": "HFN",
+      "department": "CSE"
+    },
+    {
+      "initial": "RFTS",
+      "name": "RFTS",
+      "department": "CSE"
+    },
+    {
+      "initial": "MMM",
+      "name": "MMM",
+      "department": "CSE"
+    },
+    {
+      "initial": "IBA",
+      "name": "IBA",
+      "department": "CSE"
+    },
+    {
+      "initial": "FGZ",
+      "name": "FGZ",
+      "department": "CSE"
+    },
+    {
+      "initial": "DPU",
+      "name": "DPU",
+      "department": "CSE"
+    },
+    {
+      "initial": "TAP",
+      "name": "TAP",
+      "department": "CSE"
+    },
+    {
+      "initial": "AYO",
+      "name": "AYO",
+      "department": "CSE"
+    },
+    {
+      "initial": "ASRF",
+      "name": "ASRF",
+      "department": "CSE"
+    },
+    {
+      "initial": "WHMJ",
+      "name": "WHMJ",
+      "department": "CSE"
+    },
+    {
+      "initial": "FBAW",
+      "name": "FBAW",
+      "department": "CSE"
+    },
+    {
+      "initial": "MZG",
+      "name": "MZG",
+      "department": "CSE"
+    },
+    {
+      "initial": "TSM",
+      "name": "TSM",
+      "department": "CSE"
+    },
+    {
+      "initial": "AVB",
+      "name": "AVB",
+      "department": "CSE"
+    },
+    {
+      "initial": "ANWE",
+      "name": "ANWE",
+      "department": "CSE"
+    },
+    {
+      "initial": "FIC",
+      "name": "FIC",
+      "department": "CSE"
+    },
+    {
+      "initial": "PSMD",
+      "name": "PSMD",
+      "department": "CSE"
+    },
+    {
+      "initial": "FARS",
+      "name": "FARS",
+      "department": "CSE"
+    },
+    {
+      "initial": "SLAR",
+      "name": "SLAR",
+      "department": "CSE"
+    },
+    {
+      "initial": "AKDB",
+      "name": "AKDB",
+      "department": "CSE"
+    },
+    {
+      "initial": "AQT",
+      "name": "AQT",
+      "department": "CSE"
+    },
+    {
+      "initial": "HMH",
+      "name": "HMH",
+      "department": "CSE"
+    },
+    {
+      "initial": "NFS",
+      "name": "NFS",
+      "department": "CSE"
+    },
+    {
+      "initial": "ZAZ",
+      "name": "ZAZ",
+      "department": "CSE"
+    },
+    {
+      "initial": "SDS",
+      "name": "SDS",
+      "department": "CSE"
+    },
+    {
+      "initial": "AKJ",
+      "name": "AKJ",
+      "department": "CSE"
+    },
+    {
+      "initial": "FFR",
+      "name": "FFR",
+      "department": "CSE"
+    },
+    {
+      "initial": "PDS",
+      "name": "PDS",
+      "department": "CSE"
+    },
+    {
+      "initial": "MHY",
+      "name": "MHY",
+      "department": "CSE"
+    },
+    {
+      "initial": "RFQ",
+      "name": "RFQ",
+      "department": "CSE"
+    },
+    {
+      "initial": "SDL",
+      "name": "SDL",
+      "department": "CSE"
+    },
+    {
+      "initial": "UTS",
+      "name": "UTS",
+      "department": "CSE"
+    },
+    {
+      "initial": "MOM",
+      "name": "MOM",
+      "department": "CSE"
+    },
+    {
+      "initial": "RAO",
+      "name": "RAO",
+      "department": "CSE"
+    },
+    {
+      "initial": "TAV",
+      "name": "TAV",
+      "department": "CSE"
+    },
+    {
+      "initial": "SEF",
+      "name": "SEF",
+      "department": "CSE"
+    },
+    {
+      "initial": "DZK",
+      "name": "DZK",
+      "department": "CSE"
+    },
+    {
+      "initial": "MSMA",
+      "name": "MSMA",
+      "department": "CSE"
+    },
+    {
+      "initial": "PBK",
+      "name": "PBK",
+      "department": "CSE"
+    },
+    {
+      "initial": "NLH",
+      "name": "NLH",
+      "department": "CSE"
+    },
+    {
+      "initial": "MAJIJ",
+      "name": "MAJIJ",
+      "department": "CSE"
+    },
+    {
+      "initial": "TWK",
+      "name": "TWK",
+      "department": "CSE"
+    },
+    {
+      "initial": "AFQ",
+      "name": "AFQ",
+      "department": "CSE"
+    },
+    {
+      "initial": "SUE",
+      "name": "SUE",
+      "department": "CSE"
+    },
+    {
+      "initial": "LMI",
+      "name": "LMI",
+      "department": "CSE"
+    },
+    {
+      "initial": "MVH",
+      "name": "MVH",
+      "department": "CSE"
+    },
+    {
+      "initial": "ASAK",
+      "name": "ASAK",
+      "department": "CSE"
+    },
+    {
+      "initial": "RFF",
+      "name": "RFF",
+      "department": "CSE"
+    },
+    {
+      "initial": "SRJ",
+      "name": "SRJ",
+      "department": "CSE"
+    },
+    {
+      "initial": "AKTD",
+      "name": "AKTD",
+      "department": "CSE"
+    },
+    {
+      "initial": "NTR",
+      "name": "NTR",
+      "department": "CSE"
+    },
+    {
+      "initial": "SHRR",
+      "name": "SHRR",
+      "department": "CSE"
+    },
+    {
+      "initial": "SHAH",
+      "name": "SHAH",
+      "department": "CSE"
+    },
+    {
+      "initial": "LBBH",
+      "name": "LBBH",
+      "department": "CSE"
+    },
+    {
+      "initial": "YND",
+      "name": "YND",
+      "department": "CSE"
+    },
+    {
+      "initial": "ACH",
+      "name": "ACH",
+      "department": "CSE"
+    },
+    {
+      "initial": "ZMD",
+      "name": "ZMD",
+      "department": "CSE"
+    },
+    {
+      "initial": "BDH",
+      "name": "BDH",
+      "department": "CSE"
+    },
+    {
+      "initial": "ZYH",
+      "name": "ZYH",
+      "department": "CSE"
+    },
+    {
+      "initial": "RHD",
+      "name": "RHD",
+      "department": "CSE"
+    },
+    {
+      "initial": "SWV",
+      "name": "SWV",
+      "department": "CSE"
+    },
+    {
+      "initial": "SHBK",
+      "name": "SHBK",
+      "department": "CSE"
+    },
+    {
+      "initial": "SZD",
+      "name": "SZD",
+      "department": "CSE"
+    },
+    {
+      "initial": "TNF",
+      "name": "TNF",
+      "department": "CSE"
+    },
+    {
+      "initial": "SVKG",
+      "name": "SVKG",
+      "department": "CSE"
+    },
+    {
+      "initial": "TVRR",
+      "name": "TVRR",
+      "department": "CSE"
+    },
+    {
+      "initial": "SMUR",
+      "name": "SMUR",
+      "department": "CSE"
+    },
+    {
+      "initial": "MNY",
+      "name": "MNY",
+      "department": "CSE"
+    },
+    {
+      "initial": "AMK",
+      "name": "AMK",
+      "department": "CSE"
+    },
+    {
+      "initial": "AQU",
+      "name": "AQU",
+      "department": "CSE"
+    },
+    {
+      "initial": "NAFR",
+      "name": "NAFR",
+      "department": "CSE"
+    },
+    {
+      "initial": "SADF",
+      "name": "SADF",
+      "department": "CSE"
+    },
+    {
+      "initial": "FDM",
+      "name": "FDM",
+      "department": "CSE"
+    },
+    {
+      "initial": "HBN",
+      "name": "HBN",
+      "department": "CSE"
+    },
+    {
+      "initial": "NTN",
+      "name": "NTN",
+      "department": "CSE"
+    },
+    {
+      "initial": "RZR",
+      "name": "RZR",
+      "department": "CSE"
+    },
+    {
+      "initial": "AROY",
+      "name": "AROY",
+      "department": "CSE"
+    },
+    {
+      "initial": "KKP",
+      "name": "KKP",
+      "department": "CSE"
+    },
+    {
+      "initial": "ANNH",
+      "name": "ANNH",
+      "department": "CSE"
+    },
+    {
+      "initial": "MZFZ",
+      "name": "MZFZ",
+      "department": "CSE"
+    },
+    {
+      "initial": "RSS",
+      "name": "RSS",
+      "department": "CSE"
+    },
+    {
+      "initial": "RFR",
+      "name": "RFR",
+      "department": "CSE"
+    },
+    {
+      "initial": "MLH",
+      "name": "MLH",
+      "department": "CSE"
+    },
+    {
+      "initial": "MTSM",
+      "name": "MTSM",
+      "department": "CSE"
+    },
+    {
+      "initial": "RDW",
+      "name": "RDW",
+      "department": "CSE"
+    },
+    {
+      "initial": "LRK",
+      "name": "LRK",
+      "department": "CSE"
+    },
+    {
+      "initial": "ZLNM",
+      "name": "ZLNM",
+      "department": "CSE"
+    },
+    {
+      "initial": "SADA",
+      "name": "SADA",
+      "department": "CSE"
+    },
+    {
+      "initial": "MAO",
+      "name": "MAO",
+      "department": "CSE"
+    },
+    {
+      "initial": "AAF",
+      "name": "AAF",
+      "department": "CSE"
+    },
+    {
+      "initial": "SMYA",
+      "name": "SMYA",
+      "department": "CSE"
+    },
+    {
+      "initial": "TNMF",
+      "name": "TNMF",
+      "department": "CSE"
+    },
+    {
+      "initial": "RKN",
+      "name": "RKN",
+      "department": "CSE"
+    },
+    {
+      "initial": "UJT",
+      "name": "UJT",
+      "department": "CSE"
+    },
+    {
+      "initial": "FFU",
+      "name": "FFU",
+      "department": "CSE"
+    },
+    {
+      "initial": "WLV",
+      "name": "WLV",
+      "department": "CSE"
+    },
+    {
+      "initial": "RAHA",
+      "name": "RAHA",
+      "department": "CSE"
+    },
+    {
+      "initial": "SDU",
+      "name": "SDU",
+      "department": "CSE"
+    },
+    {
+      "initial": "ALSM",
+      "name": "ALSM",
+      "department": "CSE"
+    },
+    {
+      "initial": "NUR",
+      "name": "NUR",
+      "department": "CSE"
+    },
+    {
+      "initial": "ARA",
+      "name": "ARA",
+      "department": "CSE"
+    },
+    {
+      "initial": "TSE",
+      "name": "TSE",
+      "department": "CSE"
+    },
+    {
+      "initial": "MTOT",
+      "name": "MTOT",
+      "department": "CSE"
+    },
+    {
+      "initial": "SZZ",
+      "name": "SZZ",
+      "department": "CSE"
+    },
+    {
+      "initial": "ZBH",
+      "name": "ZBH",
+      "department": "CSE"
+    },
+    {
+      "initial": "SHJR",
+      "name": "SHJR",
+      "department": "CSE"
+    },
+    {
+      "initial": "ASA",
+      "name": "ASA",
+      "department": "CSE"
+    },
+    {
+      "initial": "SRU",
+      "name": "SRU",
+      "department": "CSE"
+    },
+    {
+      "initial": "SMKD",
+      "name": "SMKD",
+      "department": "CSE"
+    },
+    {
+      "initial": "NNC",
+      "name": "NNC",
+      "department": "CSE"
+    },
+    {
+      "initial": "FEK",
+      "name": "FEK",
+      "department": "CSE"
+    },
+    {
+      "initial": "NZU",
+      "name": "NZU",
+      "department": "CSE"
+    },
+    {
+      "initial": "KZMN",
+      "name": "KZMN",
+      "department": "CSE"
+    },
+    {
+      "initial": "ALB",
+      "name": "ALB",
+      "department": "CSE"
+    },
+    {
+      "initial": "PLN",
+      "name": "PLN",
+      "department": "CSE"
+    },
+    {
+      "initial": "MRIA",
+      "name": "MRIA",
+      "department": "CSE"
+    },
+    {
+      "initial": "ADR",
+      "name": "ADR",
+      "department": "CSE"
+    },
+    {
+      "initial": "SDAS",
+      "name": "SDAS",
+      "department": "CSE"
+    },
+    {
+      "initial": "STNM",
+      "name": "STNM",
+      "department": "CSE"
+    },
+    {
+      "initial": "NLAM",
+      "name": "NLAM",
+      "department": "CSE"
+    },
+    {
+      "initial": "RKBR",
+      "name": "RKBR",
+      "department": "CSE"
+    },
+    {
+      "initial": "FMK",
+      "name": "FMK",
+      "department": "CSE"
+    },
+    {
+      "initial": "MAF",
+      "name": "MAF",
+      "department": "CSE"
+    },
+    {
+      "initial": "ARF",
+      "name": "ARF",
+      "department": "CSE"
+    },
+    {
+      "initial": "FDC",
+      "name": "FDC",
+      "department": "CSE"
+    },
+    {
+      "initial": "SKZ",
+      "name": "SKZ",
+      "department": "CSE"
+    },
+    {
+      "initial": "MSAH",
+      "name": "MSAH",
+      "department": "CSE"
+    },
+    {
+      "initial": "ANKH",
+      "name": "ANKH",
+      "department": "CSE"
+    },
+    {
+      "initial": "NDT",
+      "name": "NDT",
+      "department": "CSE"
+    },
+    {
+      "initial": "BIJS",
+      "name": "BIJS",
+      "department": "CSE"
+    },
+    {
+      "initial": "ASMN",
+      "name": "ASMN",
+      "department": "CSE"
+    },
+    {
+      "initial": "TRZ",
+      "name": "TRZ",
+      "department": "CSE"
+    },
+    {
+      "initial": "RRH",
+      "name": "RRH",
+      "department": "CSE"
+    },
+    {
+      "initial": "IBU",
+      "name": "IBU",
+      "department": "CSE"
+    },
+    {
+      "initial": "ZHS",
+      "name": "ZHS",
+      "department": "CSE"
+    },
+    {
+      "initial": "TMD",
+      "name": "TMD",
+      "department": "CSE"
+    },
+    {
+      "initial": "AJA",
+      "name": "AJA",
+      "department": "CSE"
+    },
+    {
+      "initial": "SOSB",
+      "name": "SOSB",
+      "department": "CSE"
+    },
+    {
+      "initial": "ARIF",
+      "name": "ARIF",
+      "department": "CSE"
+    },
+    {
+      "initial": "SKIB",
+      "name": "SKIB",
+      "department": "CSE"
+    },
+    {
+      "initial": "AAR",
+      "name": "AAR",
+      "department": "CSE"
+    },
+    {
+      "initial": "CMR",
+      "name": "CMR",
+      "department": "CSE"
+    },
+    {
+      "initial": "DFD",
+      "name": "DFD",
+      "department": "CSE"
+    },
+    {
+      "initial": "NWT",
+      "name": "NWT",
+      "department": "CSE"
+    },
+    {
+      "initial": "NAST",
+      "name": "NAST",
+      "department": "CSE"
+    },
+    {
+      "initial": "SDQ",
+      "name": "SDQ",
+      "department": "CSE"
+    },
+    {
+      "initial": "EHQ",
+      "name": "EHQ",
+      "department": "CSE"
+    },
+    {
+      "initial": "GRA",
+      "name": "GRA",
+      "department": "CSE"
+    },
+    {
+      "initial": "NFF",
+      "name": "NFF",
+      "department": "CSE"
+    },
+    {
+      "initial": "FYS",
+      "name": "FYS",
+      "department": "CSE"
+    },
+    {
+      "initial": "SWK",
+      "name": "SWK",
+      "department": "CSE"
+    },
+    {
+      "initial": "SDF",
+      "name": "SDF",
+      "department": "CSE"
+    },
+    {
+      "initial": "MIH",
+      "name": "MIH",
+      "department": "CSE"
+    },
+    {
+      "initial": "UPM",
+      "name": "UPM",
+      "department": "CSE"
+    },
+    {
+      "initial": "ARPD",
+      "name": "ARPD",
+      "department": "CSE"
+    },
+    {
+      "initial": "THL",
+      "name": "THL",
+      "department": "CSE"
+    },
+    {
+      "initial": "RAS",
+      "name": "RAS",
+      "department": "CSE"
+    },
+    {
+      "initial": "ZIZE",
+      "name": "ZIZE",
+      "department": "CSE"
+    },
+    {
+      "initial": "DPRN",
+      "name": "DPRN",
+      "department": "CSE"
+    },
+    {
+      "initial": "UTKR",
+      "name": "UTKR",
+      "department": "CSE"
+    },
+    {
+      "initial": "KHR",
+      "name": "KHR",
+      "department": "CSE"
+    },
+    {
+      "initial": "FZN",
+      "name": "FZN",
+      "department": "CSE"
+    },
+    {
+      "initial": "ART",
+      "name": "ART",
+      "department": "CSE"
+    },
+    {
+      "initial": "MHDE",
+      "name": "MHDE",
+      "department": "CSE"
+    },
+    {
+      "initial": "TLQ",
+      "name": "TLQ",
+      "department": "CSE"
+    },
+    {
+      "initial": "KYK",
+      "name": "KYK",
+      "department": "CSE"
+    },
+    {
+      "initial": "MHZA",
+      "name": "MHZA",
+      "department": "CSE"
+    },
+    {
+      "initial": "DNVN",
+      "name": "DNVN",
+      "department": "CSE"
+    },
+    {
+      "initial": "MSA",
+      "name": "MSA",
+      "department": "CSE"
+    }
+  ],
+  "courses": [
+    {
+      "courseCode": "CSE101",
+      "title": "Introduction to Computer Science",
+      "description": "Study of Introduction to Computer Science.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "NZRF",
+        "RBR",
+        "SBHN"
+      ]
+    },
+    {
+      "courseCode": "CSE103",
+      "title": "CSE103 Course",
+      "description": "Auto-generated curriculum for CSE103.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "XXX"
+      ]
+    },
+    {
+      "courseCode": "CSE110",
+      "title": "Programming Language I",
+      "description": "Study of Programming Language I.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MSI",
+        "TAW",
+        "ADU",
+        "RAK",
+        "AOH",
+        "KNI",
+        "MAU",
+        "RSYR",
+        "ATY",
+        "SSMT"
+      ]
+    },
+    {
+      "courseCode": "CSE111",
+      "title": "Programming Language II",
+      "description": "Study of Programming Language II.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ANK",
+        "TAW",
+        "ADU",
+        "RKBM",
+        "KNI",
+        "AIB",
+        "AFA",
+        "MAU",
+        "QUZA",
+        "TBC"
+      ]
+    },
+    {
+      "courseCode": "CSE220",
+      "title": "Data Structures",
+      "description": "Study of Data Structures.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "RAK",
+        "SHBZ",
+        "MAHR",
+        "KKS",
+        "MUNR",
+        "AIB",
+        "SWG",
+        "MNP",
+        "ITTSC",
+        "HFN",
+        "RFTS"
+      ]
+    },
+    {
+      "courseCode": "CSE221",
+      "title": "Algorithms",
+      "description": "Study of Algorithms.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MMM",
+        "IBA",
+        "FGZ",
+        "DPU",
+        "MUNR",
+        "ANK",
+        "TAP",
+        "AYO",
+        "ASRF",
+        "WHMJ",
+        "FBAW",
+        "MZG"
+      ]
+    },
+    {
+      "courseCode": "CSE230",
+      "title": "Discrete Mathematics",
+      "description": "Study of Discrete Mathematics.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "NZRF",
+        "TSM",
+        "AVB",
+        "ANWE",
+        "FIC",
+        "PSMD",
+        "QUZA",
+        "FARS",
+        "SLAR"
+      ]
+    },
+    {
+      "courseCode": "CSE250",
+      "title": "Circuits and Electronics",
+      "description": "Study of Circuits and Electronics.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "AKDB",
+        "AQT",
+        "HMH",
+        "NFS",
+        "ZAZ",
+        "SDS",
+        "AKJ",
+        "FFR",
+        "PDS",
+        "MHY",
+        "RFQ",
+        "SDL"
+      ]
+    },
+    {
+      "courseCode": "CSE251",
+      "title": "Electronic Devices and Circuits",
+      "description": "Study of Electronic Devices and Circuits.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "UTS",
+        "MOM",
+        "RAO",
+        "PDS",
+        "AQT",
+        "TAV",
+        "FFR",
+        "AKJ",
+        "SEF",
+        "SDL",
+        "HMH"
+      ]
+    },
+    {
+      "courseCode": "CSE260",
+      "title": "Digital Logic Design",
+      "description": "Study of Digital Logic Design.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "DZK",
+        "MSMA",
+        "PBK",
+        "FIC",
+        "NLH",
+        "MAJIJ",
+        "TWK",
+        "AFQ",
+        "SUE",
+        "LMI",
+        "MVH",
+        "ASAK",
+        "RFF"
+      ]
+    },
+    {
+      "courseCode": "CSE320",
+      "title": "Data Communications",
+      "description": "Study of Data Communications.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SRJ",
+        "AKTD",
+        "NTR",
+        "SHRR",
+        "FGZ",
+        "TAP",
+        "SHAH",
+        "LBBH",
+        "YND"
+      ]
+    },
+    {
+      "courseCode": "CSE321",
+      "title": "Operating System",
+      "description": "Study of Operating System.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ACH",
+        "NTR",
+        "ZMD",
+        "BDH",
+        "ZYH",
+        "RHD",
+        "SWV",
+        "SHBK",
+        "SZD",
+        "TNF",
+        "SVKG",
+        "TVRR",
+        "HFN",
+        "SMUR",
+        "MNY"
+      ]
+    },
+    {
+      "courseCode": "CSE330",
+      "title": "Numerical Methods",
+      "description": "Study of Numerical Methods.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "AMK",
+        "AQU",
+        "MNP",
+        "ITTSC",
+        "NAFR",
+        "SADF",
+        "RFTS",
+        "FDM",
+        "HBN",
+        "NTN",
+        "RZR",
+        "AROY"
+      ]
+    },
+    {
+      "courseCode": "CSE331",
+      "title": "Automata and Computability",
+      "description": "Study of Automata and Computability.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ATY",
+        "KKP",
+        "ANNH",
+        "MZFZ",
+        "RSS",
+        "ZYH",
+        "AFA",
+        "RFR",
+        "TNF",
+        "MLH"
+      ]
+    },
+    {
+      "courseCode": "CSE340",
+      "title": "Computer Architecture",
+      "description": "Study of Computer Architecture.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ACH",
+        "MTSM",
+        "PBK",
+        "RDW",
+        "SWV",
+        "LRK",
+        "ZLNM",
+        "SVKG",
+        "SADA",
+        "TWK",
+        "MAO",
+        "FARS",
+        "AFQ",
+        "AAF",
+        "SMYA",
+        "TNMF"
+      ]
+    },
+    {
+      "courseCode": "CSE341",
+      "title": "Microprocessors",
+      "description": "Study of Microprocessors.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "RKN",
+        "UJT",
+        "SMYA",
+        "FFU",
+        "WLV",
+        "RAHA"
+      ]
+    },
+    {
+      "courseCode": "CSE350",
+      "title": "Digital Electronics and Pulse Techniques",
+      "description": "Study of Digital Electronics and Pulse Techniques.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SDU",
+        "ALSM",
+        "NUR",
+        "ARA",
+        "ZAZ",
+        "TSE",
+        "MTOT",
+        "SZZ",
+        "ZBH",
+        "SHJR"
+      ]
+    },
+    {
+      "courseCode": "CSE360",
+      "title": "Computer Interfacing",
+      "description": "Study of Computer Interfacing.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ASA",
+        "SRU",
+        "RDW",
+        "UJT",
+        "SMKD",
+        "SHBK"
+      ]
+    },
+    {
+      "courseCode": "CSE370",
+      "title": "Database Systems",
+      "description": "Study of Database Systems.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "NNC",
+        "RBR",
+        "FEK",
+        "NZU",
+        "KZMN",
+        "ALB",
+        "PLN",
+        "MZG",
+        "MRIA",
+        "MNY"
+      ]
+    },
+    {
+      "courseCode": "CSE391",
+      "title": "Programming for the Internet",
+      "description": "Study of Programming for the Internet.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ADR"
+      ]
+    },
+    {
+      "courseCode": "CSE402",
+      "title": "CSE402 Course",
+      "description": "Auto-generated curriculum for CSE402.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SDAS"
+      ]
+    },
+    {
+      "courseCode": "CSE419",
+      "title": "Programming Languages and Competitive Programming",
+      "description": "Study of Programming Languages and Competitive Programming.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "KKP"
+      ]
+    },
+    {
+      "courseCode": "CSE420",
+      "title": "Compiler Design",
+      "description": "Study of Compiler Design.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ZMD",
+        "AVB",
+        "SZD",
+        "LRK",
+        "STNM",
+        "NLAM",
+        "SUE",
+        "MVH",
+        "RKBR",
+        "FMK",
+        "MAF",
+        "MNY"
+      ]
+    },
+    {
+      "courseCode": "CSE421",
+      "title": "Computer Networks",
+      "description": "Study of Computer Networks.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ARF",
+        "FDC",
+        "SKZ",
+        "MSAH",
+        "SRJ",
+        "ANKH",
+        "AKTD",
+        "MSMA",
+        "ANWE",
+        "NDT",
+        "BIJS",
+        "TVRR",
+        "ASMN"
+      ]
+    },
+    {
+      "courseCode": "CSE422",
+      "title": "Artificial Intelligence",
+      "description": "Study of Artificial Intelligence.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "TRZ",
+        "RRH",
+        "IBU",
+        "ZHS",
+        "SWG",
+        "RSS",
+        "SHAH",
+        "NDT",
+        "KKS",
+        "PSMD"
+      ]
+    },
+    {
+      "courseCode": "CSE423",
+      "title": "Computer Graphics",
+      "description": "Study of Computer Graphics.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "TMD",
+        "AJA",
+        "SRU",
+        "ZLNM",
+        "SOSB",
+        "MRIA",
+        "ARIF",
+        "RAHA",
+        "SKIB",
+        "ASRF",
+        "ASAK",
+        "SMUR",
+        "ANKH"
+      ]
+    },
+    {
+      "courseCode": "CSE424",
+      "title": "Pattern Recognition",
+      "description": "Study of Pattern Recognition.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "AAR",
+        "SBHN"
+      ]
+    },
+    {
+      "courseCode": "CSE425",
+      "title": "Neural Networks",
+      "description": "Study of Neural Networks.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MMM",
+        "DPU"
+      ]
+    },
+    {
+      "courseCode": "CSE426",
+      "title": "Advanced Algorithms",
+      "description": "Study of Advanced Algorithms.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "TSM",
+        "RFR"
+      ]
+    },
+    {
+      "courseCode": "CSE427",
+      "title": "Machine Learning",
+      "description": "Study of Machine Learning.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "CMR",
+        "DFD",
+        "NWT",
+        "NAST",
+        "FARS",
+        "QUZA",
+        "RKBM"
+      ]
+    },
+    {
+      "courseCode": "CSE428",
+      "title": "Image Processing",
+      "description": "Study of Image Processing.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MUNR",
+        "MOM",
+        "SDQ",
+        "EHQ"
+      ]
+    },
+    {
+      "courseCode": "CSE430",
+      "title": "Digital Signal Processing",
+      "description": "Study of Digital Signal Processing.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "EHQ"
+      ]
+    },
+    {
+      "courseCode": "CSE437",
+      "title": "CSE437 Course",
+      "description": "Auto-generated curriculum for CSE437.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "GRA",
+        "NFF"
+      ]
+    },
+    {
+      "courseCode": "CSE440",
+      "title": "CSE440 Course",
+      "description": "Auto-generated curriculum for CSE440.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "FYS",
+        "NLH"
+      ]
+    },
+    {
+      "courseCode": "CSE443",
+      "title": "CSE443 Course",
+      "description": "Auto-generated curriculum for CSE443.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SWK"
+      ]
+    },
+    {
+      "courseCode": "CSE446",
+      "title": "CSE446 Course",
+      "description": "Auto-generated curriculum for CSE446.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SDF"
+      ]
+    },
+    {
+      "courseCode": "CSE447",
+      "title": "CSE447 Course",
+      "description": "Auto-generated curriculum for CSE447.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MIH"
+      ]
+    },
+    {
+      "courseCode": "CSE449",
+      "title": "CSE449 Course",
+      "description": "Auto-generated curriculum for CSE449.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "AAR"
+      ]
+    },
+    {
+      "courseCode": "CSE460",
+      "title": "VLSI Design",
+      "description": "Study of VLSI Design.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "UPM",
+        "SDU",
+        "ARPD",
+        "THL",
+        "RAS",
+        "ZIZE",
+        "DPRN"
+      ]
+    },
+    {
+      "courseCode": "CSE461",
+      "title": "Introduction to Robotics",
+      "description": "Study of Introduction to Robotics.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "UTKR",
+        "RFF",
+        "KHR"
+      ]
+    },
+    {
+      "courseCode": "CSE463",
+      "title": "CSE463 Course",
+      "description": "Auto-generated curriculum for CSE463.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ASA"
+      ]
+    },
+    {
+      "courseCode": "CSE470",
+      "title": "Software Engineering",
+      "description": "Study of Software Engineering.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SHRR",
+        "FZN",
+        "RHD",
+        "NAFR",
+        "SADA",
+        "SOSB",
+        "ART",
+        "SKIB",
+        "ALB",
+        "PLN",
+        "ARIF"
+      ]
+    },
+    {
+      "courseCode": "CSE471",
+      "title": "Systems Analysis and Design",
+      "description": "Study of Systems Analysis and Design.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MIH",
+        "MHDE",
+        "KZMN",
+        "AQU",
+        "NAST",
+        "WHMJ"
+      ]
+    },
+    {
+      "courseCode": "CSE472",
+      "title": "Human-Computer Interface",
+      "description": "Study of Human-Computer Interface.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "FDC"
+      ]
+    },
+    {
+      "courseCode": "CSE481",
+      "title": "CSE481 Course",
+      "description": "Auto-generated curriculum for CSE481.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SDS"
+      ]
+    },
+    {
+      "courseCode": "CSE489",
+      "title": "CSE489 Course",
+      "description": "Auto-generated curriculum for CSE489.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ADR"
+      ]
+    },
+    {
+      "courseCode": "CSE490",
+      "title": "Special Topics",
+      "description": "Study of Special Topics.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "TLQ",
+        "SDAS",
+        "TAV"
+      ]
+    },
+    {
+      "courseCode": "CSE706",
+      "title": "CSE706 Course",
+      "description": "Auto-generated curriculum for CSE706.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "AAR"
+      ]
+    },
+    {
+      "courseCode": "CSE708",
+      "title": "CSE708 Course",
+      "description": "Auto-generated curriculum for CSE708.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "KYK"
+      ]
+    },
+    {
+      "courseCode": "CSE710",
+      "title": "CSE710 Course",
+      "description": "Auto-generated curriculum for CSE710.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "GRA"
+      ]
+    },
+    {
+      "courseCode": "CSE711",
+      "title": "CSE711 Course",
+      "description": "Auto-generated curriculum for CSE711.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "GRA"
+      ]
+    },
+    {
+      "courseCode": "CSE713",
+      "title": "CSE713 Course",
+      "description": "Auto-generated curriculum for CSE713.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "AAR"
+      ]
+    },
+    {
+      "courseCode": "CSE715",
+      "title": "CSE715 Course",
+      "description": "Auto-generated curriculum for CSE715.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MMM"
+      ]
+    },
+    {
+      "courseCode": "CSE717",
+      "title": "CSE717 Course",
+      "description": "Auto-generated curriculum for CSE717.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "KYK"
+      ]
+    },
+    {
+      "courseCode": "CSE721",
+      "title": "CSE721 Course",
+      "description": "Auto-generated curriculum for CSE721.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MIH"
+      ]
+    },
+    {
+      "courseCode": "CSE722",
+      "title": "CSE722 Course",
+      "description": "Auto-generated curriculum for CSE722.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SDF"
+      ]
+    },
+    {
+      "courseCode": "CSE724",
+      "title": "CSE724 Course",
+      "description": "Auto-generated curriculum for CSE724.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MHZA"
+      ]
+    },
+    {
+      "courseCode": "CSE726",
+      "title": "CSE726 Course",
+      "description": "Auto-generated curriculum for CSE726.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "TLQ"
+      ]
+    },
+    {
+      "courseCode": "CSE751",
+      "title": "CSE751 Course",
+      "description": "Auto-generated curriculum for CSE751.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "FYS"
+      ]
+    },
+    {
+      "courseCode": "CSE754",
+      "title": "CSE754 Course",
+      "description": "Auto-generated curriculum for CSE754.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "ASA"
+      ]
+    },
+    {
+      "courseCode": "CSE756",
+      "title": "CSE756 Course",
+      "description": "Auto-generated curriculum for CSE756.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "IBU"
+      ]
+    },
+    {
+      "courseCode": "CSE761",
+      "title": "CSE761 Course",
+      "description": "Auto-generated curriculum for CSE761.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "GRA"
+      ]
+    },
+    {
+      "courseCode": "CSE763",
+      "title": "CSE763 Course",
+      "description": "Auto-generated curriculum for CSE763.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "SWK"
+      ]
+    },
+    {
+      "courseCode": "CSE772",
+      "title": "CSE772 Course",
+      "description": "Auto-generated curriculum for CSE772.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "TBC"
+      ]
+    },
+    {
+      "courseCode": "CSE773",
+      "title": "CSE773 Course",
+      "description": "Auto-generated curriculum for CSE773.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "TLQ"
+      ]
+    },
+    {
+      "courseCode": "CSE791",
+      "title": "CSE791 Course",
+      "description": "Auto-generated curriculum for CSE791.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "DNVN"
+      ]
+    },
+    {
+      "courseCode": "CSE799",
+      "title": "CSE799 Course",
+      "description": "Auto-generated curriculum for CSE799.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "MSA"
+      ]
+    },
+    {
+      "courseCode": "EEE362",
+      "title": "EEE362 Course",
+      "description": "Auto-generated curriculum for EEE362.",
+      "creditHours": 3,
+      "taughtByInitials": [
+        "XXX"
+      ]
+    }
+  ]
+}
