@@ -37,11 +37,30 @@ mongoose.connect(process.env.MONGODB_URI)
     const courseDocs = [];
     for (const cData of parsedData.courses) {
         const facultyIds = cData.taughtByInitials.filter(init => facultyMap[init]).map(init => facultyMap[init]._id);
+        
+        // Extract department from courseCode (e.g. "CSE" from "CSE101")
+        const deptMatch = cData.courseCode.match(/^[A-Za-z]+/);
+        const department = deptMatch ? deptMatch[0].toUpperCase() : 'UNKNOWN';
+        
+        // Dummy prerequisite logic: if course code ends with '1' and > 100, make the '0' version a prereq
+        const prerequisites = [];
+        const codeNumMatch = cData.courseCode.match(/\d+$/);
+        if (codeNumMatch) {
+            const num = parseInt(codeNumMatch[0]);
+            if (num > 100 && num % 10 !== 0) {
+                // e.g. CSE111 -> relies on CSE110
+                const baseCode = cData.courseCode.replace(/\d+$/, '');
+                prerequisites.push(`${baseCode}${num - 1}`);
+            }
+        }
+
         const course = await Course.create({
             courseCode: cData.courseCode,
             title: cData.title,
             description: cData.description,
             creditHours: cData.creditHours,
+            department: department,
+            prerequisites: prerequisites,
             taughtBy: facultyIds
         });
         courseDocs.push(course);

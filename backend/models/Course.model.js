@@ -5,6 +5,8 @@ const courseSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   creditHours: { type: Number, required: true },
+  department: { type: String },
+  prerequisites: [{ type: String }],
   taughtBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Faculty' }]
 }, { timestamps: true });
 

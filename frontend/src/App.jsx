@@ -8,7 +8,9 @@ import FacultyProfile from './pages/FacultyProfile';
 import FacultyList from './pages/FacultyList';
 import ForumList from './pages/ForumList';
 import ForumDetail from './pages/ForumDetail';
-import { LogOut, BookOpen, Search } from 'lucide-react';
+import DepartmentFilterPage from './pages/DepartmentFilterPage';
+import CourseDetailByCode from './pages/CourseDetailByCode';
+import { LogOut, BookOpen, Search, Filter } from 'lucide-react';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -59,6 +61,9 @@ function App() {
             <Link to="/" className="sidebar-link">
               <BookOpen size={18} /> Courses
             </Link>
+            <Link to="/departments" className="sidebar-link">
+              <Filter size={18} /> Departments
+            </Link>
             <Link to="/faculty" className="sidebar-link">
               <Search size={18} /> Faculty
             </Link>
@@ -74,6 +79,8 @@ function App() {
               <Route path="/login" element={<Login setUser={setUser} />} />
               <Route path="/register" element={<Register setUser={setUser} />} />
               <Route path="/course/:id" element={<CourseDetail user={user} />} />
+              <Route path="/course/code/:code" element={<CourseDetailByCode />} />
+              <Route path="/departments" element={<DepartmentFilterPage />} />
               <Route path="/faculty/:id" element={<FacultyProfile />} />
               <Route path="/faculty" element={<FacultyList />} />
               <Route path="/forum" element={<ForumList user={user} />} />

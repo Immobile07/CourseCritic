@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { User, Clock, Star } from 'lucide-react';
+import PrerequisiteLinks from '../components/PrerequisiteLinks';
 
 export default function CourseDetail({ user }) {
   const { id } = useParams();
@@ -25,8 +26,8 @@ export default function CourseDetail({ user }) {
   const fetchCourseDetails = async () => {
     try {
       const [courseRes, reviewRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/courses/${id}`),
-        axios.get(`http://localhost:5000/api/reviews/course/${id}`)
+        axios.get(`http://localhost:5001/api/courses/${id}`),
+        axios.get(`http://localhost:5001/api/reviews/course/${id}`)
       ]);
       setCourse(courseRes.data);
       if (courseRes.data.taughtBy.length > 0) setFacultyId(courseRes.data.taughtBy[0]._id);
@@ -43,7 +44,7 @@ export default function CourseDetail({ user }) {
     if (!user) return setError("You must be logged in to review");
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/reviews', {
+      await axios.post('http://localhost:5001/api/reviews', {
         courseId: id,
         facultyId: facultyId,
         difficultyRating: difficulty,
@@ -72,7 +73,9 @@ export default function CourseDetail({ user }) {
         </div>
         <p style={{ fontSize: '1.1rem', marginBottom: '20px' }} className="text-muted">{course.description}</p>
         
-        <h3>Taught By:</h3>
+        <PrerequisiteLinks prerequisites={course.prerequisites} />
+
+        <h3 style={{ marginTop: '20px' }}>Taught By:</h3>
         <div className="flex gap-2 mt-2">
           {course.taughtBy.map(f => (
             <Link key={f._id} to={`/faculty/${f._id}`} style={{ textDecoration: 'none' }}>

@@ -14,7 +14,7 @@ export default function FacultyProfile() {
 
   const fetchFaculty = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/faculty/${id}`);
+      const res = await axios.get(`http://localhost:5001/api/faculty/${id}`);
       setFaculty(res.data);
       setLoading(false);
     } catch (err) {
