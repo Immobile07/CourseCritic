@@ -48,3 +48,27 @@ exports.getReviewsByCourse = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.reportReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { reason } = req.body;
+    const reporterId = req.user.userId;
+
+    if (!reason) return res.status(400).json({ message: 'Reason is required' });
+
+    const review = await Review.findById(id);
+    if (!review) return res.status(404).json({ message: 'Review not found' });
+
+    // Check if user has already reported this review
+    const alreadyReported = review.reports.some(r => r.reporter.toString() === reporterId);
+    if (alreadyReported) return res.status(400).json({ message: 'You have already reported this review' });
+
+    review.reports.push({ reporter: reporterId, reason });
+    await review.save();
+
+    res.json({ message: 'Review reported successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

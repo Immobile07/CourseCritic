@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { User, Clock, Star } from 'lucide-react';
+import { User, Clock, Star, Flag } from 'lucide-react';
 import PrerequisiteLinks from '../components/PrerequisiteLinks';
 
 export default function CourseDetail({ user }) {
@@ -18,6 +18,12 @@ export default function CourseDetail({ user }) {
   const [feedback, setFeedback] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [error, setError] = useState('');
+
+  // Report Modal state
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [reportReason, setReportReason] = useState('Spam');
+  const [otherReason, setOtherReason] = useState('');
+  const [reportingReviewId, setReportingReviewId] = useState(null);
 
   useEffect(() => {
     fetchCourseDetails();
@@ -61,6 +67,34 @@ export default function CourseDetail({ user }) {
     }
   };
 
+  const openReportModal = (reviewId) => {
+    if (!user) return alert("Please log in to report a review.");
+    setReportingReviewId(reviewId);
+    setReportReason('Spam');
+    setOtherReason('');
+    setIsReportModalOpen(true);
+  };
+
+  const submitReport = async () => {
+    const finalReason = otherReason.trim() !== '' ? `[${reportReason}] ${otherReason}` : reportReason;
+    
+    if (finalReason.trim() === '') {
+      return alert("Please provide a reason or details for the report.");
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post(`http://localhost:5001/api/reviews/${reportingReviewId}/report`, 
+        { reason: finalReason }, 
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert("Thank you. This review has been reported to the CourseCritic Moderation team.");
+      setIsReportModalOpen(false);
+    } catch (err) {
+      alert(err.response?.data?.message || "CourseCritic API: Failed to report review.");
+    }
+  };
+
   if (loading) return <div className="text-center mt-4">Loading...</div>;
   if (!course) return <div className="text-center mt-4 text-danger">Course not found</div>;
 
@@ -96,7 +130,16 @@ export default function CourseDetail({ user }) {
               <div key={review._id} className="panel">
                 <div className="flex justify-between mb-2 pb-2" style={{ borderBottom: '1px solid var(--border-color)' }}>
                   <strong>{review.isAnonymous ? 'Anonymous User' : (review.author?.username || 'Unknown')}</strong>
-                  <span className="text-muted" style={{ fontSize: '0.9rem' }}>Faculty: {review.faculty?.name}</span>
+                  <div className="flex align-center gap-3">
+                    <span className="text-muted" style={{ fontSize: '0.9rem' }}>Faculty: {review.faculty?.name}</span>
+                    <button 
+                      onClick={() => openReportModal(review._id)} 
+                      title="Report this review"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center', color: 'var(--text-muted)' }}
+                    >
+                      <Flag size={14} />
+                    </button>
+                  </div>
                 </div>
                 <div className="flex gap-4 mb-2 mt-4">
                   <div className="text-center px-2"><div style={{fontSize: '1.2rem', fontWeight: 800, color: 'var(--danger)'}}>{review.difficultyRating}/5</div><div className="text-muted" style={{fontSize:'0.8rem'}}>Difficulty</div></div>
@@ -159,6 +202,39 @@ export default function CourseDetail({ user }) {
           </div>
         </div>
       </div>
+
+      {/* Report Moderation Modal */}
+      {isReportModalOpen && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+          <div className="panel animate-fade-in" style={{ width: '400px', maxWidth: '90%', padding: '30px' }}>
+            <h3 className="mb-4">Report Review</h3>
+            <div className="mb-4">
+              <label className="text-muted mb-2" style={{ display: 'block', fontSize: '0.75rem', fontWeight: '500' }}>REASON FOR REPORT</label>
+              <select className="input-field" value={reportReason} onChange={e => setReportReason(e.target.value)}>
+                <option value="Spam">Spam</option>
+                <option value="Inappropriate Language">Inappropriate Language</option>
+                <option value="False Information">False Information</option>
+                <option value="Harassment">Harassment</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="text-muted mb-2" style={{ display: 'block', fontSize: '0.8rem', fontWeight: '600' }}>DETAILS (OPTIONAL)</label>
+              <textarea 
+                className="input-field" 
+                rows="3" 
+                value={otherReason} 
+                onChange={e => setOtherReason(e.target.value)} 
+                placeholder="Provide additional context here..."
+              />
+            </div>
+            <div className="flex gap-2 justify-end mt-6">
+              <button className="btn-secondary" onClick={() => setIsReportModalOpen(false)}>Cancel</button>
+              <button className="btn-primary" onClick={submitReport}>Submit Report</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
