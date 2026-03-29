@@ -10,7 +10,8 @@ import ForumList from './pages/ForumList';
 import ForumDetail from './pages/ForumDetail';
 import DepartmentFilterPage from './pages/DepartmentFilterPage';
 import CourseDetailByCode from './pages/CourseDetailByCode';
-import { LogOut, BookOpen, Search, Filter } from 'lucide-react';
+import Planner from './pages/Planner';
+import { LogOut, BookOpen, Search, Filter, BookMarked } from 'lucide-react';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -70,6 +71,9 @@ function App() {
             <Link to="/forum" className="sidebar-link">
               <LogOut style={{ transform: 'rotate(180deg)' }} size={18} /> Forum
             </Link>
+            <Link to="/planner" className="sidebar-link">
+              <BookMarked size={18} /> My Planner
+            </Link>
           </aside>
 
           {/* Main Content Area */}
@@ -85,6 +89,7 @@ function App() {
               <Route path="/faculty" element={<FacultyList />} />
               <Route path="/forum" element={<ForumList user={user} />} />
               <Route path="/forum/:id" element={<ForumDetail user={user} />} />
+              <Route path="/planner" element={<Planner user={user} />} />
             </Routes>
           </main>
         </div>
