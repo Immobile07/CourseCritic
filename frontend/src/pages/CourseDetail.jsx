@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { User, Clock, Star, Flag } from 'lucide-react';
+import { User, Clock, Star, Flag, BookmarkPlus, BookmarkCheck } from 'lucide-react';
 import PrerequisiteLinks from '../components/PrerequisiteLinks';
+import GradeDistributionChart from '../components/GradeDistributionChart';
 
 export default function CourseDetail({ user }) {
   const { id } = useParams();
@@ -19,6 +20,10 @@ export default function CourseDetail({ user }) {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [error, setError] = useState('');
 
+  // Planner state
+  const [isPlanned, setIsPlanned] = useState(false);
+  const [plannerLoading, setPlannerLoading] = useState(false);
+
   // Report Modal state
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [reportReason, setReportReason] = useState('Spam');
@@ -28,6 +33,10 @@ export default function CourseDetail({ user }) {
   useEffect(() => {
     fetchCourseDetails();
   }, [id]);
+
+  useEffect(() => {
+    if (user) checkPlannerStatus();
+  }, [id, user]);
 
   const fetchCourseDetails = async () => {
     try {
@@ -42,6 +51,44 @@ export default function CourseDetail({ user }) {
     } catch (err) {
       console.error(err);
       setLoading(false);
+    }
+  };
+
+  const checkPlannerStatus = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.get('http://localhost:5001/api/planner', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setIsPlanned(res.data.some(c => c._id === id));
+    } catch (err) { /* ignore */ }
+  };
+
+  const togglePlanner = async () => {
+    if (!user) {
+      alert('Please log in to use the Course Planner.');
+      return;
+    }
+    setPlannerLoading(true);
+    const token = localStorage.getItem('token');
+    try {
+      if (isPlanned) {
+        await axios.delete(`http://localhost:5001/api/planner/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setIsPlanned(false);
+      } else {
+        await axios.post(`http://localhost:5001/api/planner/${id}`, {}, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setIsPlanned(true);
+      }
+    } catch (err) {
+      const msg = err.response?.data?.message || err.response?.data?.error || err.message;
+      alert(`Planner error: ${msg}`);
+      console.error('Planner error:', err.response?.data || err);
+    } finally {
+      setPlannerLoading(false);
     }
   };
 
@@ -103,7 +150,32 @@ export default function CourseDetail({ user }) {
       <div className="panel mb-4">
         <div className="flex justify-between align-center mb-2">
           <h1 style={{ margin: 0 }}>{course.courseCode}: {course.title}</h1>
-          <span className="badge badge-cyan">{course.creditHours} Credits</span>
+          <div className="flex align-center gap-2">
+            <span className="badge badge-cyan">{course.creditHours} Credits</span>
+            <button
+              onClick={togglePlanner}
+              disabled={plannerLoading}
+              title={isPlanned ? 'Remove from Planner' : 'Add to Planner'}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 12px',
+                borderRadius: '4px',
+                border: isPlanned ? '1px solid var(--primary)' : '1px solid var(--border-color)',
+                background: isPlanned ? 'rgba(6,182,212,0.12)' : 'transparent',
+                color: isPlanned ? 'var(--primary)' : 'var(--text-muted)',
+                cursor: 'pointer',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                transition: 'all 0.2s'
+              }}
+            >
+              {isPlanned
+                ? <><BookmarkCheck size={16} /> In Planner</>
+                : <><BookmarkPlus size={16} /> Add to Planner</>}
+            </button>
+          </div>
         </div>
         <p style={{ fontSize: '1.1rem', marginBottom: '20px' }} className="text-muted">{course.description}</p>
         
@@ -121,6 +193,8 @@ export default function CourseDetail({ user }) {
           {course.taughtBy.length === 0 && <span className="text-muted">No faculty listed</span>}
         </div>
       </div>
+
+      <GradeDistributionChart reviews={reviews} />
 
       <div className="grid grid-cols-2">
         <div>
