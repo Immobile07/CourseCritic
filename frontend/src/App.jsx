@@ -11,7 +11,8 @@ import ForumDetail from './pages/ForumDetail';
 import DepartmentFilterPage from './pages/DepartmentFilterPage';
 import CourseDetailByCode from './pages/CourseDetailByCode';
 import Planner from './pages/Planner';
-import { LogOut, BookOpen, Search, Filter, BookMarked } from 'lucide-react';
+import AdminDashboard from './pages/AdminDashboard';
+import { LogOut, BookOpen, Search, Filter, BookMarked, Shield } from 'lucide-react';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -74,6 +75,11 @@ function App() {
             <Link to="/planner" className="sidebar-link">
               <BookMarked size={18} /> My Planner
             </Link>
+            {user && user.role === 'Admin' && (
+              <Link to="/admin" className="sidebar-link" style={{ color: 'var(--primary)' }}>
+                <Shield size={18} /> Admin Dashboard
+              </Link>
+            )}
           </aside>
 
           {/* Main Content Area */}
@@ -90,6 +96,7 @@ function App() {
               <Route path="/forum" element={<ForumList user={user} />} />
               <Route path="/forum/:id" element={<ForumDetail user={user} />} />
               <Route path="/planner" element={<Planner user={user} />} />
+              <Route path="/admin" element={<AdminDashboard user={user} />} />
             </Routes>
           </main>
         </div>
