@@ -14,6 +14,7 @@ const courseRoutes = require('./routes/course.routes');
 const professorRoutes = require('./routes/professor.routes');
 const reviewRoutes = require('./routes/review.routes');
 const userRoutes = require('./routes/user.routes');
+const adminRoutes = require('./routes/admin.routes');
 
 // Mount routes
 app.use('/api/auth', authRoutes);
@@ -21,6 +22,7 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/professors', professorRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected successfully'))
