@@ -1,4 +1,21 @@
 const Course = require('../models/Course.model');
+const Review = require('../models/Review.model');
+
+exports.getTopElectives = async (req, res) => {
+  try {
+    const topElectives = await Review.aggregate([
+      { $group: { _id: "$course", avgUsefulness: { $avg: "$usefulnessRating" } } },
+      { $sort: { avgUsefulness: -1 } },
+      { $lookup: { from: 'courses', localField: '_id', foreignField: '_id', as: 'courseData' } },
+      { $unwind: "$courseData" },
+      { $match: { "courseData.isElective": true } },
+      { $limit: 3 }
+    ]);
+    res.json(topElectives);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 exports.createCourse = async (req, res) => {
   try {
@@ -37,7 +54,9 @@ exports.searchCourses = async (req, res) => {
 
 exports.getCourseById = async (req, res) => {
   try {
-    const course = await Course.findById(req.params.id).populate('taughtBy');
+    const course = await Course.findById(req.params.id)
+      .populate('taughtBy')
+      .populate('prerequisites');
     if (!course) return res.status(404).json({ message: 'Course not found' });
     res.json(course);
   } catch (err) {

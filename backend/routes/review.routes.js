@@ -5,6 +5,5 @@ const auth = require('../middleware/auth.middleware');
 
 router.post('/', auth, reviewController.createReview);
 router.get('/course/:courseId', reviewController.getReviewsByCourse);
-router.post('/:id/report', auth, reviewController.reportReview);
 
 module.exports = router;
