@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const reviewController = require('../controllers/review.controller');
 const auth = require('../middleware/auth.middleware');
+const reviewRateLimit = require('../middleware/reviewRateLimit.middleware');
 
-router.post('/', auth, reviewController.createReview);
+router.post('/', auth, reviewRateLimit, reviewController.createReview);
 router.get('/course/:courseId', reviewController.getReviewsByCourse);
 
 module.exports = router;
