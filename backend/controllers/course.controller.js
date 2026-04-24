@@ -29,7 +29,7 @@ exports.createCourse = async (req, res) => {
 
 exports.getAllCourses = async (req, res) => {
   try {
-    const courses = await Course.find();
+    const courses = await Course.find({ isApproved: true });
     res.json(courses);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -41,6 +41,7 @@ exports.searchCourses = async (req, res) => {
     const { query } = req.query;
     if (!query) return res.json([]);
     const courses = await Course.find({
+      isApproved: true,
       $or: [
         { courseCode: { $regex: query, $options: 'i' } },
         { title: { $regex: query, $options: 'i' } }
