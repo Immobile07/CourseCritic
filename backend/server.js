@@ -11,20 +11,16 @@ app.use(express.json());
 // Import routes
 const authRoutes = require('./routes/auth.routes');
 const courseRoutes = require('./routes/course.routes');
-const facultyRoutes = require('./routes/faculty.routes');
+const professorRoutes = require('./routes/professor.routes');
 const reviewRoutes = require('./routes/review.routes');
-const forumRoutes = require('./routes/forum.routes');
-const advancedFeaturesRoutes = require('./routes/advancedFeatures.routes');
-const plannerRoutes = require('./routes/planner.routes');
+const userRoutes = require('./routes/user.routes');
 
 // Mount routes
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
-app.use('/api/faculty', facultyRoutes);
+app.use('/api/professors', professorRoutes);
 app.use('/api/reviews', reviewRoutes);
-app.use('/api/forums', forumRoutes);
-app.use('/api/advanced', advancedFeaturesRoutes);
-app.use('/api/planner', plannerRoutes);
+app.use('/api/users', userRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected successfully'))
