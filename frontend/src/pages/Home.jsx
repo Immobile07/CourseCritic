@@ -14,7 +14,7 @@ export default function Home() {
 
   const fetchCourses = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/courses');
+      const res = await axios.get('http://localhost:5000/api/courses');
       setCourses(res.data);
       setLoading(false);
     } catch (err) {
@@ -23,12 +23,14 @@ export default function Home() {
     }
   };
 
+
+
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!query) return fetchCourses();
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5001/api/courses/search?query=${query}`);
+      const res = await axios.get(`http://localhost:5000/api/courses/search?query=${query}`);
       setCourses(res.data);
       setLoading(false);
     } catch (err) {
@@ -39,55 +41,54 @@ export default function Home() {
 
   return (
     <div>
-      <div className="panel animate-fade-in" style={{ padding: '40px' }}>
-        <h1 style={{ marginBottom: '8px' }}>Course Directory</h1>
-        <p className="text-muted" style={{ marginBottom: '24px' }}>
-          Search for courses, view difficulty ratings, and read student reviews.
+      <div className="text-center mb-4 glass-panel" style={{ padding: '60px 20px', background: 'radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%)' }}>
+        <h1 className="text-gradient" style={{ fontSize: '3rem' }}>Find Your Perfect Schedule</h1>
+        <p className="text-muted" style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 30px auto' }}>
+          Discover course difficulty, usefulness, and workload before you enroll based on real student experiences.
         </p>
         
-        <form onSubmit={handleSearch} style={{ maxWidth: '100%', position: 'relative' }}>
-          <div className="flex gap-2">
-            <input 
-              type="text" 
-              placeholder="Search by course code (e.g. CS-301) or title..." 
-              className="input-field"
-              style={{ flex: 1 }}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <button type="submit" className="btn-primary flex align-center gap-2">
-              <Search size={18} /> Search
-            </button>
-          </div>
+        <form onSubmit={handleSearch} style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
+          <input 
+            type="text" 
+            placeholder="Search by course code (e.g. CS-301) or title..." 
+            className="input-glass"
+            style={{ padding: '16px 24px', paddingRight: '50px', fontSize: '1.1rem', borderRadius: '50px' }}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button type="submit" style={{ position: 'absolute', right: '8px', top: '8px', background: 'transparent', border: 'none', color: 'var(--primary)', cursor: 'pointer', padding: '8px' }}>
+            <Search size={24} />
+          </button>
         </form>
       </div>
 
-      <div className="grid grid-cols-3">
-        {loading ? (
-          <p className="text-center text-muted" style={{ gridColumn: '1/-1' }}>Loading courses...</p>
-        ) : (
-          <>
-            {courses.map(course => (
-              <Link to={`/course/${course._id}`} key={course._id} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className="panel course-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <div className="panel-header">
-                    <span>{course.courseCode}</span>
-                    <span className="badge badge-cyan">{course.creditHours} Credits</span>
+      <h2 className="mt-5 mb-4">Course Directory</h2>
+      {loading ? (
+        <p className="text-center text-muted">Loading courses...</p>
+      ) : (
+        <div className="grid grid-cols-3">
+          {courses.map(course => (
+            <Link to={`/course/${course._id}`} key={course._id} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <div className="glass-panel course-card h-100 flex-col justify-between" style={{ height: '100%' }}>
+                <div>
+                  <div className="flex justify-between align-center mb-2">
+                    <h3 className="text-gradient" style={{ margin: 0 }}>{course.courseCode}</h3>
+                    <span className="badge badge-primary"><Clock size={14}/> {course.creditHours} Credits</span>
                   </div>
-                  <h3 style={{ fontSize: '1.2rem', margin: '0 0 12px 0' }}>{course.title}</h3>
-                  <p className="text-muted" style={{ fontSize: '0.9rem', flex: 1, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                  <h4 style={{ marginBottom: '12px', fontSize: '1.2rem' }}>{course.title}</h4>
+                  <p className="text-muted" style={{ fontSize: '0.9rem', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                     {course.description}
                   </p>
-                  <div className="mt-4 pt-4" style={{ borderTop: '1px solid var(--border-color)', textAlign: 'right' }}>
-                    <span className="text-primary font-bold" style={{ fontSize: '0.9rem' }}>View Details →</span>
-                  </div>
                 </div>
-              </Link>
-            ))}
-            {courses.length === 0 && <p className="text-muted" style={{ gridColumn: '1 / -1', textAlign: 'center' }}>No courses found. Try a different search.</p>}
-          </>
-        )}
-      </div>
+                <div className="mt-4 pt-4 flex gap-2" style={{ borderTop: '1px solid var(--border-color)' }}>
+                  <span className="badge badge-success"><Book size={14}/> View details</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+          {courses.length === 0 && <p className="text-muted" style={{ gridColumn: '1 / -1', textAlign: 'center' }}>No courses found. Try a different search.</p>}
+        </div>
+      )}
     </div>
   );
 }
