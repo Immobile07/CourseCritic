@@ -8,6 +8,8 @@ const courseSchema = new mongoose.Schema({
   taughtBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Professor' }],
   prerequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
   isElective: { type: Boolean, default: false }
+  isElective: { type: Boolean, default: false },
+  isApproved: { type: Boolean, default: false }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Course', courseSchema);
