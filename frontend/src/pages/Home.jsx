@@ -36,6 +36,8 @@ export default function Home() {
       setElectivesLoading(false);
     }
   };
+
+
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!query) return fetchCourses();
