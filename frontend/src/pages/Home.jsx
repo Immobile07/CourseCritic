@@ -7,9 +7,12 @@ export default function Home() {
   const [courses, setCourses] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [topElectives, setTopElectives] = useState([]);
+  const [electivesLoading, setElectivesLoading] = useState(true);
 
   useEffect(() => {
     fetchCourses();
+    fetchTopElectives();
   }, []);
 
   const fetchCourses = async () => {
@@ -23,6 +26,16 @@ export default function Home() {
     }
   };
 
+  const fetchTopElectives = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/api/courses/top-electives');
+      setTopElectives(res.data);
+      setElectivesLoading(false);
+    } catch (err) {
+      console.error(err);
+      setElectivesLoading(false);
+    }
+  };
 
 
   const handleSearch = async (e) => {
@@ -61,6 +74,34 @@ export default function Home() {
           </button>
         </form>
       </div>
+
+      <h2 className="mt-4 mb-4 text-gradient" style={{ fontSize: '2rem' }}>⭐ Top Rated Electives</h2>
+      {electivesLoading ? (
+        <p className="text-center text-muted">Loading top electives...</p>
+      ) : topElectives.length > 0 ? (
+        <div className="grid grid-cols-3 mb-5">
+          {topElectives.map(item => (
+            <Link to={`/course/${item._id}`} key={item._id} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <div className="glass-panel" style={{ height: '100%', border: '1px solid rgba(99, 102, 241, 0.3)', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%)' }}>
+                <div className="flex justify-between align-center mb-2">
+                  <h3 style={{ margin: 0 }}>{item.courseData.courseCode}</h3>
+                  <div className="text-gradient" style={{ fontWeight: 800, fontSize: '1.2rem' }}>⭐ {(item.avgUsefulness).toFixed(1)}/5</div>
+                </div>
+                <h4 className="mb-2">{item.courseData.title}</h4>
+                <p className="text-muted" style={{ fontSize: '0.9rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                    {item.courseData.description}
+                </p>
+                <div className="mt-3 pt-3 flex justify-between align-center" style={{ borderTop: '1px solid var(--border-color)' }}>
+                  <span className="badge badge-primary">{item.courseData.creditHours} Credits</span>
+                  <span className="text-muted" style={{ fontSize: '0.8rem' }}>Avg Usefulness</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : (
+         <p className="text-muted" style={{ marginBottom: '40px' }}>No rated electives found. Be the first to review!</p>
+      )}
 
       <h2 className="mt-5 mb-4">Course Directory</h2>
       {loading ? (
