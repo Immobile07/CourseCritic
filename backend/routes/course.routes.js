@@ -8,6 +8,7 @@ router.get('/top-electives', courseController.getTopElectives);
 router.get('/', courseController.getAllCourses);
 router.get('/search', courseController.searchCourses);
 router.get('/:id', courseController.getCourseById);
+router.get('/:id/companions', courseController.getCompanionCourses);
 router.put('/:id', auth, courseController.updateCourse);
 router.delete('/:id', auth, courseController.deleteCourse);
 

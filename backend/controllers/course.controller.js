@@ -66,6 +66,53 @@ exports.getCourseById = async (req, res) => {
   }
 };
 
+exports.getCompanionCourses = async (req, res) => {
+  try {
+    const courseId = req.params.id;
+    // Find all reviews for this course to identify users who took it
+    const reviewsForCourse = await Review.find({ course: courseId }).select('author');
+    const userIds = [...new Set(reviewsForCourse.map(r => r.author.toString()))];
+
+    if (userIds.length === 0) {
+      return res.json([]);
+    }
+
+    // Find all reviews by these users for OTHER courses
+    const companionReviews = await Review.find({
+      author: { $in: userIds },
+      course: { $ne: courseId }
+    });
+
+    // Count frequency of each companion course
+    const courseCounts = {};
+    for (const r of companionReviews) {
+      const cid = r.course.toString();
+      courseCounts[cid] = (courseCounts[cid] || 0) + 1;
+    }
+
+    // Sort by count descending and take top 5
+    const topCompanionIds = Object.keys(courseCounts)
+      .sort((a, b) => courseCounts[b] - courseCounts[a])
+      .slice(0, 5);
+
+    if (topCompanionIds.length === 0) {
+      return res.json([]);
+    }
+
+    // Fetch the actual course documents
+    const companionCourses = await Course.find({ _id: { $in: topCompanionIds }, isApproved: true });
+    
+    // Sort courses in the same order as topCompanionIds
+    const result = topCompanionIds
+      .map(id => companionCourses.find(c => c._id.toString() === id))
+      .filter(Boolean);
+
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 exports.updateCourse = async (req, res) => {
   try {
     const course = await Course.findByIdAndUpdate(req.params.id, req.body, { new: true });

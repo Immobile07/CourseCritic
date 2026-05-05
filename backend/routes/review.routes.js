@@ -6,5 +6,6 @@ const reviewRateLimit = require('../middleware/reviewRateLimit.middleware');
 
 router.post('/', auth, reviewRateLimit, reviewController.createReview);
 router.get('/course/:courseId', reviewController.getReviewsByCourse);
+router.get('/professor/:professorId', reviewController.getReviewsByProfessor);
 
 module.exports = router;
