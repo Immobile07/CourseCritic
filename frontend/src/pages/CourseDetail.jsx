@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { User, Clock, Star, GitBranch, CalendarPlus } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import CourseGradingOutline from '../components/CourseGradingOutline'; // <-- New Import
 
 export default function CourseDetail({ user }) {
   const { id } = useParams();
@@ -226,6 +227,9 @@ export default function CourseDetail({ user }) {
               </div>
             </div>
           )}
+
+          {/* NEW GRADING SCHEME OUTLINE ADDED HERE */}
+          <CourseGradingOutline gradingScheme={course.gradingScheme} />
 
           {hasGrades && (
             <div className="mb-5 glass-panel">
