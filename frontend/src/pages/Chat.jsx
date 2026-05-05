@@ -5,14 +5,16 @@ import { Navigate } from 'react-router-dom';
 
 const Chat = ({ user }) => {
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = selectedUser => {
-    setSelectedUserHook(selectedUser);
-    setMessages([]); // clear old messages
-  };
   const [selectedUserHook, setSelectedUserHook] = useState(null);
   const [messages, setMessages] = useState([]);
+
+  const setSelectedUser = (u) => {
+    setSelectedUserHook(u);
+    setMessages([]); // clear old messages
+  };
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const messagesEndRef = useRef(null);
 
   // Redirect if not logged in
@@ -93,48 +95,66 @@ const Chat = ({ user }) => {
       {/* Sidebar - Users List */}
       <div style={{ width: '300px', borderRight: '1px solid var(--border)', background: 'var(--surface)', display: 'flex', flexDirection: 'column' }}>
         <div style={{ padding: '20px', borderBottom: '1px solid var(--border)', background: 'var(--surface)' }}>
-          <h2 style={{ fontSize: '1.2rem', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <h2 style={{ fontSize: '1.2rem', margin: '0 0 15px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <MessageSquare size={20} color="var(--primary)" />
             Conversations
           </h2>
+          <input 
+            type="text"
+            placeholder="Search users..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '8px 12px',
+              borderRadius: '8px',
+              border: '1px solid var(--border)',
+              background: 'var(--bg)',
+              color: 'var(--text-main)',
+              fontSize: '0.85rem',
+              outline: 'none'
+            }}
+          />
         </div>
 
         <div style={{ flex: 1, overflowY: 'auto' }}>
-          {users.length === 0 ? (
+          {users.filter(u => u.username.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 ? (
             <div style={{ padding: '20px', textAlign: 'center', color: 'var(--text-muted)' }}>
-              No other users found.
+              {searchQuery ? 'No matching users.' : 'No other users found.'}
             </div>
           ) : (
-            users.map(u => (
-              <div
-                key={u._id}
-                onClick={() => setSelectedUser(u)}
-                style={{
-                  padding: '15px 20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  cursor: 'pointer',
-                  background: selectedUserHook?._id === u._id ? 'var(--bg)' : 'transparent',
-                  borderLeft: selectedUserHook?._id === u._id ? '4px solid var(--primary)' : '4px solid transparent',
-                  transition: 'all 0.2s ease',
-                }}
-                className="chat-user-item"
-              >
-                <div style={{
-                  width: '40px', height: '40px', borderRadius: '50%', background: 'var(--primary)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'
-                }}>
-                  {u.username.charAt(0).toUpperCase()}
+            users
+              .filter(u => u.username.toLowerCase().includes(searchQuery.toLowerCase()))
+              .map(u => (
+                <div
+                  key={u._id}
+                  onClick={() => setSelectedUser(u)}
+                  style={{
+                    padding: '15px 20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    cursor: 'pointer',
+                    background: selectedUserHook?._id === u._id ? 'var(--bg)' : 'transparent',
+                    borderLeft: selectedUserHook?._id === u._id ? '4px solid var(--primary)' : '4px solid transparent',
+                    transition: 'all 0.2s ease',
+                  }}
+                  className="chat-user-item"
+                >
+                  <div style={{
+                    width: '40px', height: '40px', borderRadius: '50%', background: 'var(--primary)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'
+                  }}>
+                    {u.username.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <h4 style={{ margin: 0, fontSize: '0.95rem' }}>{u.username}</h4>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', background: 'var(--bg)', padding: '2px 6px', borderRadius: '10px' }}>
+                      {u.role}
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '0.95rem' }}>{u.username}</h4>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', background: 'var(--bg)', padding: '2px 6px', borderRadius: '10px' }}>
-                    {u.role}
-                  </span>
-                </div>
-              </div>
-            ))
+              ))
           )}
         </div>
       </div>

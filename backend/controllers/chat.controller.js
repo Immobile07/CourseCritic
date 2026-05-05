@@ -5,7 +5,7 @@ const User = require('../models/User.model');
 exports.getUsers = async (req, res) => {
   try {
     // Exclude the current user from the list
-    const users = await User.find({ _id: { $ne: req.user.id } })
+    const users = await User.find({ _id: { $ne: req.user.userId } })
       .select('username email role');
     res.json(users);
   } catch (error) {
@@ -18,7 +18,7 @@ exports.getUsers = async (req, res) => {
 exports.sendMessage = async (req, res) => {
   try {
     const { receiverId, content } = req.body;
-    const senderId = req.user.id;
+    const senderId = req.user.userId;
 
     if (!receiverId || !content) {
       return res.status(400).json({ message: 'Receiver ID and content are required' });
@@ -41,7 +41,7 @@ exports.sendMessage = async (req, res) => {
 // Get conversation between the logged-in user and another user
 exports.getConversation = async (req, res) => {
   try {
-    const currentUserId = req.user.id;
+    const currentUserId = req.user.userId;
     const { otherUserId } = req.params;
 
     const messages = await Message.find({

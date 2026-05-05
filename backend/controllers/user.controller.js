@@ -4,7 +4,7 @@ const Course = require('../models/Course.model');
 exports.getPlanner = async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).populate('plannedCourses');
-    res.json(user.plannedCourses);
+    res.json(user?.plannedCourses || []);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

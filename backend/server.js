@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 // ── Stripe webhook needs raw body BEFORE express.json() ───────────────────────
-app.use('/api/payslip/webhook', express.raw({ type: 'application/json' }));
+app.use('/api/features/payslip/webhook', express.raw({ type: 'application/json' }));
 
 app.use(express.json());
 

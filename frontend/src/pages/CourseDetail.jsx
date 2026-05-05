@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { User, Clock, Star, GitBranch, CalendarPlus } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import CourseGradingOutline from '../components/CourseGradingOutline'; // <-- New Import
+import CourseGradingOutline from '../components/CourseGradingOutline';
+import GradeDistributionChart from '../components/GradeDistributionChart';
 
 export default function CourseDetail({ user }) {
   const { id } = useParams();
@@ -231,29 +232,8 @@ export default function CourseDetail({ user }) {
           {/* NEW GRADING SCHEME OUTLINE ADDED HERE */}
           <CourseGradingOutline gradingScheme={course.gradingScheme} />
 
-          {hasGrades && (
-            <div className="mb-5 glass-panel">
-              <h2 className="mb-4 text-gradient">Grade Distribution</h2>
-              <div style={{ height: '250px', width: '100%' }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={gradeData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <XAxis dataKey="grade" stroke="var(--text-muted)" tick={{ fill: 'var(--text-muted)' }} />
-                    <YAxis allowDecimals={false} stroke="var(--text-muted)" tick={{ fill: 'var(--text-muted)' }} />
-                    <Tooltip 
-                      cursor={{ fill: 'rgba(255,255,255,0.05)' }} 
-                      contentStyle={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px' }}
-                      itemStyle={{ color: 'var(--text-main)' }}
-                    />
-                    <Bar dataKey="count" radius={[4, 4, 0, 0]}>
-                      {gradeData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={getBarColor(entry.grade)} />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          )}
+          {/* Grade Distribution Chart (estimated from reviews) */}
+          <GradeDistributionChart reviews={reviews} />
 
           <h2 className="mb-4">Student Reviews</h2>
           <div className="flex-col gap-4">
