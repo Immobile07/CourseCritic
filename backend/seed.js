@@ -38,7 +38,8 @@ mongoose.connect(process.env.MONGODB_URI)
             title: cData.title,
             description: cData.description,
             creditHours: cData.creditHours,
-            taughtBy: profIds
+            taughtBy: profIds,
+            isApproved: true
         });
         courseDocs.push(course);
         

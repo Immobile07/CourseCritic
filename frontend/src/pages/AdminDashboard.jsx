@@ -19,8 +19,8 @@ export default function AdminDashboard({ user }) {
       const headers = { Authorization: `Bearer ${token}` };
 
       const [coursesRes, reviewsRes] = await Promise.all([
-        axios.get('http://localhost:5001/api/admin/courses/unapproved', { headers }),
-        axios.get('http://localhost:5001/api/admin/reviews/reported', { headers })
+        axios.get('http://localhost:5000/api/admin/courses/unapproved', { headers }),
+        axios.get('http://localhost:5000/api/admin/reviews/reported', { headers })
       ]);
 
       setUnapprovedCourses(coursesRes.data);
@@ -36,7 +36,7 @@ export default function AdminDashboard({ user }) {
   const approveCourse = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5001/api/admin/courses/${id}/approve`, {}, {
+      await axios.put(`http://localhost:5000/api/admin/courses/${id}/approve`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUnapprovedCourses(prev => prev.filter(c => c._id !== id));
@@ -49,7 +49,7 @@ export default function AdminDashboard({ user }) {
     if (!window.confirm('Are you sure you want to delete this course?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5001/api/admin/courses/${id}`, {
+      await axios.delete(`http://localhost:5000/api/admin/courses/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUnapprovedCourses(prev => prev.filter(c => c._id !== id));
@@ -62,7 +62,7 @@ export default function AdminDashboard({ user }) {
   const dismissReport = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5001/api/admin/reviews/${id}/dismiss`, {}, {
+      await axios.put(`http://localhost:5000/api/admin/reviews/${id}/dismiss`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setReportedReviews(prev => prev.filter(r => r._id !== id));
@@ -75,7 +75,7 @@ export default function AdminDashboard({ user }) {
     if (!window.confirm('Are you sure you want to delete this review?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5001/api/admin/reviews/${id}`, {
+      await axios.delete(`http://localhost:5000/api/admin/reviews/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setReportedReviews(prev => prev.filter(r => r._id !== id));

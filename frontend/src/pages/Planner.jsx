@@ -15,7 +15,7 @@ export default function Planner({ user }) {
   const fetchPlanner = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5001/api/planner', {
+      const res = await axios.get('http://localhost:5000/api/planner', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPlannedCourses(res.data);
@@ -29,7 +29,7 @@ export default function Planner({ user }) {
   const removeFromPlanner = async (courseId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5001/api/planner/${courseId}`, {
+      await axios.delete(`http://localhost:5000/api/planner/${courseId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPlannedCourses(prev => prev.filter(c => c._id !== courseId));

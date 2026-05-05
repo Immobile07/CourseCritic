@@ -16,3 +16,7 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+# Ignore previous backups and uploads
+CourseCritic-main previous/
+backend/uploads/

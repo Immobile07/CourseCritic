@@ -1,5 +1,6 @@
 const Course = require('../models/Course.model');
 const Review = require('../models/Review.model');
+const { snapshotCourse } = require('./feature.controller');
 
 exports.getTopElectives = async (req, res) => {
   try {
@@ -69,6 +70,9 @@ exports.updateCourse = async (req, res) => {
   try {
     const course = await Course.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!course) return res.status(404).json({ message: 'Course not found' });
+    // Auto-snapshot the updated course for historical tracking
+    const changedFields = Object.keys(req.body);
+    await snapshotCourse(course, changedFields, req.user?.userId, req.body.changeNote || '');
     res.json(course);
   } catch (err) {
     res.status(400).json({ error: err.message });

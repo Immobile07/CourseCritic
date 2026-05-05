@@ -7,7 +7,7 @@ const CourseDetailByCode = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5001/api/advanced/course/${code}`)
+    fetch(`http://localhost:5000/api/advanced/course/${code}`)
       .then(res => res.json())
       .then(data => {
         if (data._id) {

@@ -14,7 +14,7 @@ export default function FacultyList() {
 
   const fetchFaculty = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/faculty');
+      const res = await axios.get('http://localhost:5000/api/faculty');
       setFaculty(res.data);
       setLoading(false);
     } catch (err) {
@@ -28,7 +28,7 @@ export default function FacultyList() {
     if (!query) return fetchFaculty();
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5001/api/faculty/search?query=${query}`);
+      const res = await axios.get(`http://localhost:5000/api/faculty/search?query=${query}`);
       setFaculty(res.data);
       setLoading(false);
     } catch (err) {

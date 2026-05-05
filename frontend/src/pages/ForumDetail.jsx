@@ -17,7 +17,7 @@ export default function ForumDetail({ user }) {
 
   const fetchTopicDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:5001/api/forums/${id}`);
+      const res = await axios.get(`http://localhost:5000/api/forums/${id}`);
       setTopic(res.data.topic);
       setAnswers(res.data.answers);
       setLoading(false);
@@ -36,7 +36,7 @@ export default function ForumDetail({ user }) {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5001/api/forums/${id}/answers`, 
+      await axios.post(`http://localhost:5000/api/forums/${id}/answers`, 
         { content, isAnonymous },
         { headers: { Authorization: `Bearer ${token}` } }
       );

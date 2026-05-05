@@ -9,7 +9,7 @@ const DepartmentFilterPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/advanced/departments')
+    fetch('http://localhost:5000/api/advanced/departments')
       .then(res => res.json())
       .then(data => {
         setDepartments(data);
@@ -21,7 +21,7 @@ const DepartmentFilterPage = () => {
   useEffect(() => {
     if (!selectedDept) return;
     setLoading(true);
-    fetch(`http://localhost:5001/api/advanced/departments/${selectedDept}`)
+    fetch(`http://localhost:5000/api/advanced/departments/${selectedDept}`)
       .then(res => res.json())
       .then(data => {
         setCourses(data);

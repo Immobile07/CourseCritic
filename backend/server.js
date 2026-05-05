@@ -1,14 +1,22 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 
 app.use(cors());
+
+// ── Stripe webhook needs raw body BEFORE express.json() ───────────────────────
+app.use('/api/payslip/webhook', express.raw({ type: 'application/json' }));
+
 app.use(express.json());
 
-// Import routes
+// ── Serve uploaded files statically ───────────────────────────────────────────
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Import original routes
 const authRoutes = require('./routes/auth.routes');
 const courseRoutes = require('./routes/course.routes');
 const professorRoutes = require('./routes/professor.routes');
@@ -16,13 +24,25 @@ const reviewRoutes = require('./routes/review.routes');
 const userRoutes = require('./routes/user.routes');
 const adminRoutes = require('./routes/admin.routes');
 
-// Mount routes
+// Import new feature routes
+const featureRoutes = require('./routes/feature.routes');
+const facultyRoutes = require('./routes/faculty.routes');
+const plannerRoutes = require('./routes/planner.routes');
+const forumRoutes = require('./routes/forum.routes');
+
+// Mount original routes
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/professors', professorRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
+
+// Mount new feature routes
+app.use('/api/features', featureRoutes);
+app.use('/api/faculty', facultyRoutes);
+app.use('/api/planner', plannerRoutes);
+app.use('/api/forum', forumRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected successfully'))

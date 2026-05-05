@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { User, Clock, Star } from 'lucide-react';
+import { User, Clock, Star, GitBranch } from 'lucide-react';
 
 export default function CourseDetail({ user }) {
   const { id } = useParams();
@@ -96,7 +96,22 @@ export default function CourseDetail({ user }) {
       <div className="glass-panel mb-4">
         <div className="flex justify-between align-center mb-2">
           <h1 className="text-gradient" style={{ margin: 0 }}>{course.courseCode}: {course.title}</h1>
-          <span className="badge badge-primary"><Clock size={16}/> {course.creditHours} Credits</span>
+          <div className="flex align-center gap-2">
+            <span className="badge badge-primary"><Clock size={16}/> {course.creditHours} Credits</span>
+            <Link
+              to={`/course/${id}/history`}
+              style={{ textDecoration: 'none' }}
+            >
+              <span className="badge" style={{
+                background: 'rgba(99,102,241,0.15)', color: '#a5b4fc',
+                border: '1px solid rgba(99,102,241,0.3)', padding: '6px 12px',
+                borderRadius: '20px', display: 'inline-flex', alignItems: 'center',
+                gap: '6px', cursor: 'pointer', fontSize: '0.82rem', fontWeight: 600,
+              }}>
+                <GitBranch size={14} /> History & Resources
+              </span>
+            </Link>
+          </div>
         </div>
         <p style={{ fontSize: '1.1rem', marginBottom: '20px' }}>{course.description}</p>
         
