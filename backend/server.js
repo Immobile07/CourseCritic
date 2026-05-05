@@ -43,7 +43,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/features', featureRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/planner', plannerRoutes);
-app.use('/api/forum', forumRoutes);
+app.use('/api/forums', forumRoutes);
 app.use('/api/chat', chatRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
