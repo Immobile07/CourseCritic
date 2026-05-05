@@ -4,7 +4,7 @@ const Professor = require('../models/Professor.model');
 
 exports.createReview = async (req, res) => {
   try {
-    const { courseId, professorId, difficultyRating, usefulnessRating, workloadRating, writtenFeedback, isAnonymous } = req.body;
+    const { courseId, professorId, difficultyRating, usefulnessRating, workloadRating, writtenFeedback, isAnonymous, grade } = req.body;
     
     const course = await Course.findById(courseId);
     const professor = await Professor.findById(professorId);
@@ -18,7 +18,8 @@ exports.createReview = async (req, res) => {
       usefulnessRating,
       workloadRating,
       writtenFeedback,
-      isAnonymous
+      isAnonymous,
+      grade
     });
 
     await review.save();
@@ -33,6 +34,27 @@ exports.getReviewsByCourse = async (req, res) => {
     const reviews = await Review.find({ course: req.params.courseId })
       .populate('author', 'username')
       .populate('professor', 'name');
+    
+    // Mask author if anonymous
+    const result = reviews.map(r => {
+      const reviewObj = r.toObject();
+      if (reviewObj.isAnonymous && reviewObj.author) {
+        reviewObj.author.username = 'Anonymous';
+      }
+      return reviewObj;
+    });
+
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getReviewsByProfessor = async (req, res) => {
+  try {
+    const reviews = await Review.find({ professor: req.params.professorId })
+      .populate('author', 'username')
+      .populate('course', 'courseCode title');
     
     // Mask author if anonymous
     const result = reviews.map(r => {

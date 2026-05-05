@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { Book, Clock } from 'lucide-react';
+import { Book, Clock, Mail, MapPin } from 'lucide-react';
 
 export default function FacultyProfile() {
   const { id } = useParams();
   const [faculty, setFaculty] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,8 +15,12 @@ export default function FacultyProfile() {
 
   const fetchFaculty = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/faculty/${id}`);
+      const [res, reviewsRes] = await Promise.all([
+        axios.get(`http://localhost:5000/api/faculty/${id}`),
+        axios.get(`http://localhost:5000/api/reviews/professor/${id}`)
+      ]);
       setFaculty(res.data);
+      setReviews(reviewsRes.data);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -30,7 +35,15 @@ export default function FacultyProfile() {
     <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
       <div className="panel animate-fade-in" style={{ padding: '40px', textAlign: 'center' }}>
         <h1 style={{ marginBottom: '8px' }}>{faculty.name}</h1>
-        <p className="text-muted" style={{ fontSize: '1.1rem' }}>{faculty.department} Department</p>
+        <p className="text-muted" style={{ fontSize: '1.1rem', marginBottom: '16px' }}>{faculty.department} Department</p>
+        <div className="flex justify-center gap-4 text-muted">
+          <div className="flex align-center gap-2">
+            <Mail size={16} /> <span>{faculty.email || 'Not Provided'}</span>
+          </div>
+          <div className="flex align-center gap-2">
+            <MapPin size={16} /> <span>{faculty.deskNumber || 'Not Provided'}</span>
+          </div>
+        </div>
       </div>
 
       <h2 className="mb-4">Courses Taught</h2>
@@ -51,6 +64,30 @@ export default function FacultyProfile() {
                 </div>
               </div>
             </Link>
+          ))}
+        </div>
+      )}
+
+      <h2 className="mb-4 mt-5">Student Reviews</h2>
+      {reviews.length === 0 ? (
+        <p className="text-muted panel text-center">No reviews yet for this faculty member.</p>
+      ) : (
+        <div className="flex-col gap-4">
+          {reviews.map(review => (
+            <div key={review._id} className="glass-panel">
+              <div className="flex justify-between mb-2 pb-2" style={{ borderBottom: '1px solid var(--border-color)' }}>
+                <strong>{review.isAnonymous ? 'Anonymous User' : (review.author?.username || 'Unknown')}</strong>
+                <span className="text-muted" style={{ fontSize: '0.9rem' }}>
+                  Course: <Link to={`/course/${review.course?._id}`} style={{ color: 'var(--primary)', textDecoration: 'none' }}>{review.course?.courseCode}</Link>
+                </span>
+              </div>
+              <div className="flex gap-4 mb-2 mt-4">
+                <div className="text-center px-2"><div style={{fontSize: '1.2rem', fontWeight: 800, color: '#ef4444'}}>{review.difficultyRating}/5</div><div className="text-muted" style={{fontSize:'0.8rem'}}>Difficulty</div></div>
+                <div className="text-center px-2"><div style={{fontSize: '1.2rem', fontWeight: 800, color: '#10b981'}}>{review.usefulnessRating}/5</div><div className="text-muted" style={{fontSize:'0.8rem'}}>Usefulness</div></div>
+                <div className="text-center px-2"><div style={{fontSize: '1.2rem', fontWeight: 800, color: '#f59e0b'}}>{review.workloadRating}/5</div><div className="text-muted" style={{fontSize:'0.8rem'}}>Workload</div></div>
+              </div>
+              <p className="mt-4" style={{ fontStyle: 'italic', lineHeight: 1.6 }}>"{review.writtenFeedback}"</p>
+            </div>
           ))}
         </div>
       )}

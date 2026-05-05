@@ -8,7 +8,8 @@ const reviewSchema = new mongoose.Schema({
   usefulnessRating: { type: Number, required: true, min: 1, max: 5 },
   workloadRating: { type: Number, required: true, min: 1, max: 5 },
   writtenFeedback: { type: String, required: true },
-  isAnonymous: { type: Boolean, default: false }
+  isAnonymous: { type: Boolean, default: false },
+  grade: { type: String, enum: ['A', 'B', 'C', 'D', 'F', 'I', 'W'], required: false }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Review', reviewSchema);

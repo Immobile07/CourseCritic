@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { User, Clock, Star, GitBranch } from 'lucide-react';
+import { User, Clock, Star, GitBranch, CalendarPlus } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 export default function CourseDetail({ user }) {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
   const [reviews, setReviews] = useState([]);
+  const [companions, setCompanions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Review Form state
@@ -16,6 +18,7 @@ export default function CourseDetail({ user }) {
   const [workload, setWorkload] = useState(3);
   const [feedback, setFeedback] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const [grade, setGrade] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -24,17 +27,32 @@ export default function CourseDetail({ user }) {
 
   const fetchCourseDetails = async () => {
     try {
-      const [courseRes, reviewRes] = await Promise.all([
+      const [courseRes, reviewRes, companionsRes] = await Promise.all([
         axios.get(`http://localhost:5000/api/courses/${id}`),
-        axios.get(`http://localhost:5000/api/reviews/course/${id}`)
+        axios.get(`http://localhost:5000/api/reviews/course/${id}`),
+        axios.get(`http://localhost:5000/api/courses/${id}/companions`)
       ]);
       setCourse(courseRes.data);
       if (courseRes.data.taughtBy.length > 0) setProfId(courseRes.data.taughtBy[0]._id);
       setReviews(reviewRes.data);
+      setCompanions(companionsRes.data);
       setLoading(false);
     } catch (err) {
       console.error(err);
       setLoading(false);
+    }
+  };
+
+  const addToPlanner = async () => {
+    if (!user) return alert("You must be logged in to add to planner");
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post(`http://localhost:5000/api/planner/${id}`, {}, { 
+        headers: { Authorization: `Bearer ${token}` } 
+      });
+      alert('Course added to planner successfully!');
+    } catch (err) {
+      alert(err.response?.data?.error || 'Failed to add to planner');
     }
   };
 
@@ -50,7 +68,8 @@ export default function CourseDetail({ user }) {
         usefulnessRating: usefulness,
         workloadRating: workload,
         writtenFeedback: feedback,
-        isAnonymous
+        isAnonymous,
+        grade: grade || undefined
       }, { headers: { Authorization: `Bearer ${token}` } });
       
       setFeedback('');
@@ -91,6 +110,27 @@ export default function CourseDetail({ user }) {
     workload: (p.workload / p.count).toFixed(1)
   })).sort((a, b) => b.usefulness - a.usefulness);
 
+  const gradeCounts = { A: 0, B: 0, C: 0, D: 0, F: 0, I: 0, W: 0 };
+  let hasGrades = false;
+  reviews.forEach(r => {
+    if (r.grade && gradeCounts[r.grade] !== undefined) {
+      gradeCounts[r.grade]++;
+      hasGrades = true;
+    }
+  });
+
+  const gradeData = Object.keys(gradeCounts).map(g => ({
+    grade: g,
+    count: gradeCounts[g]
+  }));
+
+  const getBarColor = (g) => {
+    if (['A', 'B'].includes(g)) return '#10b981';
+    if (['C'].includes(g)) return '#f59e0b';
+    if (['D', 'F', 'W'].includes(g)) return '#ef4444';
+    return '#6366f1';
+  };
+
   return (
     <div>
       <div className="glass-panel mb-4">
@@ -98,6 +138,18 @@ export default function CourseDetail({ user }) {
           <h1 className="text-gradient" style={{ margin: 0 }}>{course.courseCode}: {course.title}</h1>
           <div className="flex align-center gap-2">
             <span className="badge badge-primary"><Clock size={16}/> {course.creditHours} Credits</span>
+            
+            {user && (
+              <span className="badge" onClick={addToPlanner} style={{
+                background: 'rgba(16,185,129,0.15)', color: '#10b981',
+                border: '1px solid rgba(16,185,129,0.3)', padding: '6px 12px',
+                borderRadius: '20px', display: 'inline-flex', alignItems: 'center',
+                gap: '6px', cursor: 'pointer', fontSize: '0.82rem', fontWeight: 600,
+              }}>
+                <CalendarPlus size={14} /> Add to Planner
+              </span>
+            )}
+
             <Link
               to={`/course/${id}/history`}
               style={{ textDecoration: 'none' }}
@@ -175,6 +227,30 @@ export default function CourseDetail({ user }) {
             </div>
           )}
 
+          {hasGrades && (
+            <div className="mb-5 glass-panel">
+              <h2 className="mb-4 text-gradient">Grade Distribution</h2>
+              <div style={{ height: '250px', width: '100%' }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={gradeData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                    <XAxis dataKey="grade" stroke="var(--text-muted)" tick={{ fill: 'var(--text-muted)' }} />
+                    <YAxis allowDecimals={false} stroke="var(--text-muted)" tick={{ fill: 'var(--text-muted)' }} />
+                    <Tooltip 
+                      cursor={{ fill: 'rgba(255,255,255,0.05)' }} 
+                      contentStyle={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px' }}
+                      itemStyle={{ color: 'var(--text-main)' }}
+                    />
+                    <Bar dataKey="count" radius={[4, 4, 0, 0]}>
+                      {gradeData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={getBarColor(entry.grade)} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          )}
+
           <h2 className="mb-4">Student Reviews</h2>
           <div className="flex-col gap-4">
             {reviews.map(review => (
@@ -196,50 +272,82 @@ export default function CourseDetail({ user }) {
         </div>
 
         <div>
-          <div className="glass-panel" style={{ position: 'sticky', top: '100px' }}>
-            <h2 className="mb-4 text-gradient">Leave a Review</h2>
-            {!user ? (
-               <p className="text-center pt-4 pb-4">Please <Link to="/login" style={{color: 'var(--primary)'}}>login</Link> to review this course.</p>
-            ) : (
-            <form onSubmit={submitReview} className="flex-col gap-4">
-              {error && <div style={{ color: '#ef4444', textAlign: 'center' }}>{error}</div>}
-              <div>
-                <label className="text-muted mb-2" style={{ display: 'block' }}>Professor</label>
-                <select className="input-glass" value={profId} onChange={e => setProfId(e.target.value)} required>
-                  <option value="" disabled style={{color: 'black'}}>Select a professor</option>
-                  {course.taughtBy.map(prof => (
-                    <option key={prof._id} value={prof._id} style={{color: 'black'}}>{prof.name}</option>
+          <div style={{ position: 'sticky', top: '100px' }}>
+            <div className="glass-panel">
+              <h2 className="mb-4 text-gradient">Leave a Review</h2>
+              {!user ? (
+                 <p className="text-center pt-4 pb-4">Please <Link to="/login" style={{color: 'var(--primary)'}}>login</Link> to review this course.</p>
+              ) : (
+              <form onSubmit={submitReview} className="flex-col gap-4">
+                {error && <div style={{ color: '#ef4444', textAlign: 'center' }}>{error}</div>}
+                <div>
+                  <label className="text-muted mb-2" style={{ display: 'block' }}>Professor</label>
+                  <select className="input-glass" value={profId} onChange={e => setProfId(e.target.value)} required>
+                    <option value="" disabled style={{color: 'black'}}>Select a professor</option>
+                    {course.taughtBy.map(prof => (
+                      <option key={prof._id} value={prof._id} style={{color: 'black'}}>{prof.name}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex justify-between gap-2">
+                  <div className="flex-col" style={{ flex: 1 }}>
+                    <label className="text-center text-muted mb-2">Difficulty</label>
+                    <input type="number" min="1" max="5" className="input-glass text-center" value={difficulty} onChange={e => setDifficulty(e.target.value)} required />
+                  </div>
+                  <div className="flex-col" style={{ flex: 1 }}>
+                    <label className="text-center text-muted mb-2">Usefulness</label>
+                    <input type="number" min="1" max="5" className="input-glass text-center" value={usefulness} onChange={e => setUsefulness(e.target.value)} required />
+                  </div>
+                  <div className="flex-col" style={{ flex: 1 }}>
+                    <label className="text-center text-muted mb-2">Workload</label>
+                    <input type="number" min="1" max="5" className="input-glass text-center" value={workload} onChange={e => setWorkload(e.target.value)} required />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-muted mb-2" style={{ display: 'block' }}>Grade Received (Optional)</label>
+                  <select className="input-glass" value={grade} onChange={e => setGrade(e.target.value)}>
+                    <option value="" style={{color: 'black'}}>Prefer not to say</option>
+                    <option value="A" style={{color: 'black'}}>A</option>
+                    <option value="B" style={{color: 'black'}}>B</option>
+                    <option value="C" style={{color: 'black'}}>C</option>
+                    <option value="D" style={{color: 'black'}}>D</option>
+                    <option value="F" style={{color: 'black'}}>F</option>
+                    <option value="I" style={{color: 'black'}}>I (Incomplete)</option>
+                    <option value="W" style={{color: 'black'}}>W (Withdrew)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-muted mb-2" style={{ display: 'block' }}>Written Feedback</label>
+                  <textarea className="input-glass" rows="4" value={feedback} onChange={e => setFeedback(e.target.value)} required placeholder="Share your experience..."></textarea>
+                </div>
+
+                <div className="flex align-center gap-2">
+                  <input type="checkbox" id="anon" checked={isAnonymous} onChange={e => setIsAnonymous(e.target.checked)} />
+                  <label htmlFor="anon">Post Anonymously</label>
+                </div>
+
+                <button type="submit" className="btn-primary mt-2">Submit Review</button>
+              </form>
+              )}
+            </div>
+
+            {companions && companions.length > 0 && (
+              <div className="glass-panel mt-4">
+                <h2 className="mb-4 text-gradient" style={{ fontSize: '1.25rem' }}>Students also took</h2>
+                <div className="flex-col gap-2">
+                  {companions.map(comp => (
+                    <Link key={comp._id} to={`/course/${comp._id}`} style={{ textDecoration: 'none' }}>
+                      <div className="course-card" style={{ padding: '12px 16px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
+                        <div style={{ fontWeight: 600, color: 'var(--primary)' }}>{comp.courseCode}</div>
+                        <div style={{ fontSize: '0.85rem', color: 'var(--text-main)' }}>{comp.title}</div>
+                      </div>
+                    </Link>
                   ))}
-                </select>
-              </div>
-
-              <div className="flex justify-between gap-2">
-                <div className="flex-col" style={{ flex: 1 }}>
-                  <label className="text-center text-muted mb-2">Difficulty</label>
-                  <input type="number" min="1" max="5" className="input-glass text-center" value={difficulty} onChange={e => setDifficulty(e.target.value)} required />
-                </div>
-                <div className="flex-col" style={{ flex: 1 }}>
-                  <label className="text-center text-muted mb-2">Usefulness</label>
-                  <input type="number" min="1" max="5" className="input-glass text-center" value={usefulness} onChange={e => setUsefulness(e.target.value)} required />
-                </div>
-                <div className="flex-col" style={{ flex: 1 }}>
-                  <label className="text-center text-muted mb-2">Workload</label>
-                  <input type="number" min="1" max="5" className="input-glass text-center" value={workload} onChange={e => setWorkload(e.target.value)} required />
                 </div>
               </div>
-
-              <div>
-                <label className="text-muted mb-2" style={{ display: 'block' }}>Written Feedback</label>
-                <textarea className="input-glass" rows="4" value={feedback} onChange={e => setFeedback(e.target.value)} required placeholder="Share your experience..."></textarea>
-              </div>
-
-              <div className="flex align-center gap-2">
-                <input type="checkbox" id="anon" checked={isAnonymous} onChange={e => setIsAnonymous(e.target.checked)} />
-                <label htmlFor="anon">Post Anonymously</label>
-              </div>
-
-              <button type="submit" className="btn-primary mt-2">Submit Review</button>
-            </form>
             )}
           </div>
         </div>
