@@ -29,6 +29,7 @@ const featureRoutes = require('./routes/feature.routes');
 const facultyRoutes = require('./routes/faculty.routes');
 const plannerRoutes = require('./routes/planner.routes');
 const forumRoutes = require('./routes/forum.routes');
+const chatRoutes = require('./routes/chat.routes');
 
 // Mount original routes
 app.use('/api/auth', authRoutes);
@@ -43,6 +44,7 @@ app.use('/api/features', featureRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/planner', plannerRoutes);
 app.use('/api/forum', forumRoutes);
+app.use('/api/chat', chatRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected successfully'))
@@ -50,5 +52,5 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

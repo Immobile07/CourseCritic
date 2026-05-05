@@ -15,7 +15,8 @@ import AdminDashboard from './pages/AdminDashboard';
 import Payslip from './pages/Payslip';
 import CourseHistory from './pages/CourseHistory';
 import GPASimulator from './pages/GPASimulator';
-import { LogOut, BookOpen, Search, Filter, BookMarked, Shield, Receipt, GitBranch, Calculator } from 'lucide-react';
+import Chat from './pages/Chat';
+import { LogOut, BookOpen, Search, Filter, BookMarked, Shield, Receipt, GitBranch, Calculator, MessageSquare } from 'lucide-react';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -88,6 +89,11 @@ function App() {
                 <Calculator size={18} /> GPA Simulator
               </Link>
             )}
+            {user && (
+              <Link to="/chat" className="sidebar-link">
+                <MessageSquare size={18} /> Messages
+              </Link>
+            )}
             {user && user.role === 'Admin' && (
               <Link to="/admin" className="sidebar-link" style={{ color: 'var(--primary)' }}>
                 <Shield size={18} /> Admin Dashboard
@@ -113,6 +119,7 @@ function App() {
               <Route path="/admin" element={<AdminDashboard user={user} />} />
               <Route path="/payslip" element={<Payslip user={user} />} />
               <Route path="/simulator" element={<GPASimulator user={user} />} />
+              <Route path="/chat" element={<Chat user={user} />} />
             </Routes>
           </main>
         </div>
